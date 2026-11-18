@@ -1,0 +1,107 @@
+table DimProduct
+	lineageTag: 53fde88d-1d35-4653-9063-4da9b0444517
+
+	column sku_id
+		dataType: string
+		lineageTag: ebd0062f-c289-4691-b929-d7f7d4e4eff5
+		summarizeBy: none
+		sourceColumn: sku_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column product_name
+		dataType: string
+		lineageTag: 753c3d41-153a-44ed-ab9b-795f34d24106
+		summarizeBy: none
+		sourceColumn: product_name
+		sortByColumn: key_line_order
+
+		annotation SummarizationSetBy = Automatic
+
+	column category
+		dataType: string
+		lineageTag: 5a735ce7-51ef-4511-a51f-714012d4845f
+		summarizeBy: none
+		sourceColumn: category
+
+		annotation SummarizationSetBy = Automatic
+
+	column launch_price_2023
+		dataType: double
+		lineageTag: 35b02354-b255-49f0-af93-085c21e1620d
+		summarizeBy: sum
+		sourceColumn: launch_price_2023
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column shelf_life_days
+		dataType: int64
+		formatString: 0
+		lineageTag: 2e5e8f38-549d-4f17-a9bb-e747e3f89ff1
+		summarizeBy: sum
+		sourceColumn: shelf_life_days
+
+		annotation SummarizationSetBy = Automatic
+
+	column case_size
+		dataType: int64
+		formatString: 0
+		lineageTag: 8b79eb3d-185c-4761-9bd5-a773d73c3618
+		summarizeBy: sum
+		sourceColumn: case_size
+
+		annotation SummarizationSetBy = Automatic
+
+	column unit_cost_2023
+		dataType: double
+		lineageTag: f51edc04-0f1b-46a7-8804-abb0715d7b90
+		summarizeBy: sum
+		sourceColumn: unit_cost_2023
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column is_alcohol
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: d661d6d7-2bc0-471c-9907-3daeb425823a
+		summarizeBy: none
+		sourceColumn: is_alcohol
+
+		annotation SummarizationSetBy = Automatic
+
+	column delivery_schedule
+		dataType: string
+		lineageTag: b469281e-aae0-473e-aded-ae3fa940d46a
+		summarizeBy: none
+		sourceColumn: delivery_schedule
+
+		annotation SummarizationSetBy = Automatic
+
+	/// The 8 products that matter most on match days (Page 2).
+	column is_key_line = DimProduct[sku_id] IN { "SKU108", "SKU120", "SKU109", "SKU100", "SKU103", "SKU131", "SKU132", "SKU133" }
+		dataType: boolean
+		lineageTag: dd8644f2-d5a8-4757-8e30-457dea5c1eff
+
+	column key_line_order = SWITCH ( DimProduct[sku_id], "SKU108", 1, "SKU120", 2, "SKU109", 3, "SKU100", 4, "SKU103", 5, "SKU131", 6, "SKU132", 7, "SKU133", 8, 100 + VALUE ( RIGHT ( DimProduct[sku_id], 3 ) ) )
+		dataType: int64
+		isHidden
+		lineageTag: 1fe786b6-5c72-48f2-8579-be314a006848
+		summarizeBy: none
+
+	partition DimProduct = m
+		mode: import
+		source =
+				let
+				  Source = Excel.Workbook(File.Contents(DataFile), null, true),
+				  #"Navigation 1" = Source{[Item = "DimProduct", Kind = "Sheet"]}[Data],
+				  #"Promoted headers" = Table.PromoteHeaders(#"Navigation 1", [PromoteAllScalars = true]),
+				  #"Changed column type" = Table.TransformColumnTypes(#"Promoted headers", {{"sku_id", type text}, {"product_name", type text}, {"category", type text}, {"launch_price_2023", type number}, {"shelf_life_days", Int64.Type}, {"case_size", Int64.Type}, {"unit_cost_2023", type number}, {"is_alcohol", type logical}, {"delivery_schedule", type text}}, "en-US")
+				in
+				  #"Changed column type"
+
+	annotation PBI_ResultType = Table
+

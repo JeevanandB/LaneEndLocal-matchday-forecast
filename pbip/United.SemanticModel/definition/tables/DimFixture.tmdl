@@ -1,0 +1,103 @@
+table DimFixture
+	lineageTag: 73439540-0912-4935-a9b5-7dc309bf0496
+
+	column date
+		dataType: dateTime
+		formatString: dd mmm yyyy
+		lineageTag: a3382f72-2592-4999-bbd2-d710fa5bab04
+		summarizeBy: none
+		sourceColumn: date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column season
+		dataType: string
+		lineageTag: 74b07e17-051e-4b93-a843-3d7a4da86ceb
+		summarizeBy: none
+		sourceColumn: season
+
+		annotation SummarizationSetBy = Automatic
+
+	column competition
+		dataType: string
+		lineageTag: d6a7a9ed-7131-488b-a9db-f98a544f6a56
+		summarizeBy: none
+		sourceColumn: competition
+
+		annotation SummarizationSetBy = Automatic
+
+	column kickoff
+		dataType: string
+		lineageTag: 758d2850-9548-4040-87c9-4c8dfaf1ab0f
+		summarizeBy: none
+		sourceColumn: kickoff
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Time
+
+	column kickoff_band
+		dataType: string
+		lineageTag: 9ebb6902-23b8-47b7-b78f-5292b9d47936
+		summarizeBy: none
+		sourceColumn: kickoff_band
+
+		annotation SummarizationSetBy = Automatic
+
+	column opponent
+		dataType: string
+		lineageTag: e27ceda8-308f-433e-9e7f-4a8954dca0f5
+		summarizeBy: none
+		sourceColumn: opponent
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_derby
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 8029fe90-fe82-4492-a75e-eccfcc56f598
+		summarizeBy: none
+		sourceColumn: is_derby
+
+		annotation SummarizationSetBy = Automatic
+
+	column attendance
+		dataType: int64
+		formatString: 0
+		lineageTag: 247145e3-8d9d-4bd6-a8db-0dffe1cb2d0b
+		summarizeBy: sum
+		sourceColumn: attendance
+
+		annotation SummarizationSetBy = Automatic
+
+	column kickoff_source
+		dataType: string
+		lineageTag: 22ebabe1-13d7-4361-a387-9209fadda0a3
+		summarizeBy: none
+		sourceColumn: kickoff_source
+
+		annotation SummarizationSetBy = Automatic
+
+	column attendance_source
+		dataType: string
+		lineageTag: c4296da9-ac83-4251-9b8c-cf3ef68ec635
+		summarizeBy: none
+		sourceColumn: attendance_source
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DimFixture = m
+		mode: import
+		source =
+				let
+				  Source = Excel.Workbook(File.Contents(DataFile), null, true),
+				  #"Navigation 1" = Source{[Item = "DimFixture", Kind = "Sheet"]}[Data],
+				  #"Promoted headers" = Table.PromoteHeaders(#"Navigation 1", [PromoteAllScalars = true]),
+				  #"Changed column type" = Table.TransformColumnTypes(#"Promoted headers", {{"date", type date}, {"season", type text}, {"competition", type text}, {"kickoff", type text}, {"kickoff_band", type text}, {"opponent", type text}, {"is_derby", type logical}, {"attendance", Int64.Type}, {"kickoff_source", type text}, {"attendance_source", type text}}, "en-US")
+				in
+				  #"Changed column type"
+
+	annotation PBI_ResultType = Table
+

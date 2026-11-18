@@ -1,0 +1,29 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-GB
+	valueFilterBehavior: independent
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation __PBI_TimeIntelligenceEnabled = 0
+
+annotation PBI_QueryOrder = ["DataFile","DimDate","DimProduct","DimFixture","FactSales","FactHourly","SkuMatchUplift","FactForecast","FactOrderPlan"]
+
+annotation PBI_ProTooling = ["DevMode","MCP-PBIModeling"]
+
+ref table DimDate
+ref table DimProduct
+ref table DimFixture
+ref table FactSales
+ref table FactHourly
+ref table SkuMatchUplift
+ref table FactForecast
+ref table FactOrderPlan
+ref table DimHour
+ref table _Measures
+ref table PlanView
+
+ref cultureInfo en-US
+

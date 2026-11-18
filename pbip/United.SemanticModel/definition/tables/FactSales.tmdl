@@ -1,0 +1,147 @@
+table FactSales
+	lineageTag: fc2bc144-088b-4c02-a347-bb03199e4a46
+
+	column date
+		dataType: dateTime
+		isHidden
+		formatString: dd/mm/yyyy
+		lineageTag: 41544bda-8cfe-48c1-8740-0b5a47775cb9
+		summarizeBy: none
+		sourceColumn: date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column sku_id
+		dataType: string
+		isHidden
+		lineageTag: ac0ac673-eef6-455b-bf74-b2d86ce185dc
+		summarizeBy: none
+		sourceColumn: sku_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column units_sold
+		dataType: int64
+		formatString: 0
+		lineageTag: 26f460ef-c7f2-4dbb-9308-37795428f2d4
+		summarizeBy: sum
+		sourceColumn: units_sold
+
+		annotation SummarizationSetBy = Automatic
+
+	column unit_price
+		dataType: double
+		lineageTag: 47e2e53a-0892-4eb9-9782-f25c4fa729a3
+		summarizeBy: sum
+		sourceColumn: unit_price
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column regular_price
+		dataType: double
+		lineageTag: c732ae7f-ae94-4a75-877d-2389fbac5879
+		summarizeBy: sum
+		sourceColumn: regular_price
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column on_promo
+		dataType: int64
+		formatString: 0
+		lineageTag: 0240d36b-a0f6-41a0-bafa-da9d6257088e
+		summarizeBy: sum
+		sourceColumn: on_promo
+
+		annotation SummarizationSetBy = Automatic
+
+	column promo_discount_pct
+		dataType: int64
+		formatString: 0
+		lineageTag: e1e68fb2-fd32-4cf3-beaf-dbec4741c4c5
+		summarizeBy: sum
+		sourceColumn: promo_discount_pct
+
+		annotation SummarizationSetBy = Automatic
+
+	column revenue
+		dataType: double
+		lineageTag: adf22fa5-eca0-4f5e-8f02-2a901c143435
+		summarizeBy: sum
+		sourceColumn: revenue
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column stock_open
+		dataType: int64
+		formatString: 0
+		lineageTag: 7876c5ae-2626-4d1b-bba8-f32947200162
+		summarizeBy: sum
+		sourceColumn: stock_open
+
+		annotation SummarizationSetBy = Automatic
+
+	column delivered_units
+		dataType: int64
+		formatString: 0
+		lineageTag: 51231859-d341-4261-aaae-3aec4a6cb9c8
+		summarizeBy: sum
+		sourceColumn: delivered_units
+
+		annotation SummarizationSetBy = Automatic
+
+	column waste_units
+		dataType: int64
+		formatString: 0
+		lineageTag: de0ab9ff-6d2d-4239-ba16-8747e341d3fa
+		summarizeBy: sum
+		sourceColumn: waste_units
+
+		annotation SummarizationSetBy = Automatic
+
+	column stock_close
+		dataType: int64
+		formatString: 0
+		lineageTag: 97112adb-2cf5-46cd-a2e7-30a34128683e
+		summarizeBy: sum
+		sourceColumn: stock_close
+
+		annotation SummarizationSetBy = Automatic
+
+	column stockout_flag
+		dataType: int64
+		formatString: 0
+		lineageTag: 09d62977-1ef7-41da-9662-54851cffa1bb
+		summarizeBy: sum
+		sourceColumn: stockout_flag
+
+		annotation SummarizationSetBy = Automatic
+
+	column data_status
+		dataType: string
+		lineageTag: 6def2fc5-42ad-4ff4-95c2-b2bfc6caf461
+		summarizeBy: none
+		sourceColumn: data_status
+
+		annotation SummarizationSetBy = Automatic
+
+	partition FactSales = m
+		mode: import
+		source =
+				let
+				  Source = Excel.Workbook(File.Contents(DataFile), null, true),
+				  #"Navigation 1" = Source{[Item = "FactSales", Kind = "Sheet"]}[Data],
+				  #"Promoted headers" = Table.PromoteHeaders(#"Navigation 1", [PromoteAllScalars = true]),
+				  #"Changed column type" = Table.TransformColumnTypes(#"Promoted headers", {{"date", type date}, {"sku_id", type text}, {"units_sold", Int64.Type}, {"unit_price", type number}, {"regular_price", type number}, {"on_promo", Int64.Type}, {"promo_discount_pct", Int64.Type}, {"revenue", type number}, {"stock_open", Int64.Type}, {"delivered_units", Int64.Type}, {"waste_units", Int64.Type}, {"stock_close", Int64.Type}, {"stockout_flag", Int64.Type}, {"data_status", type text}}, "en-US")
+				in
+				  #"Changed column type"
+
+	annotation PBI_ResultType = Table
+

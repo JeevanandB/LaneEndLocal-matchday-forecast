@@ -1,0 +1,21 @@
+/// Trading hours 06:00-22:00 for hourly charts.
+table DimHour
+	lineageTag: 7bfcb52f-f251-4a7a-8a90-fce0eb994608
+
+	column hour
+		dataType: int64
+		formatString: 0
+		lineageTag: f28f01d4-e867-499c-ae21-4a925acfe54d
+		summarizeBy: none
+		sourceColumn: [hour]
+
+	column hour_label
+		dataType: string
+		lineageTag: 174dce23-30ba-4e37-ae64-d2ca765cfc4d
+		sourceColumn: [hour_label]
+		sortByColumn: hour
+
+	partition DimHour = calculated
+		mode: import
+		source = SELECTCOLUMNS ( GENERATESERIES ( 6, 22, 1 ), "hour", [Value], "hour_label", FORMAT ( [Value], "00" ) & ":00" )
+

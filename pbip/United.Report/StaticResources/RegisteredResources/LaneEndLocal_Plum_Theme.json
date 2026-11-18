@@ -1,0 +1,54 @@
+{
+  "name": "Lane End Local - Plum",
+  "dataColors": ["#4C0743", "#A0559A", "#C99AC2", "#B3A9B1", "#6E1A63", "#8E3A83", "#E9D9E6", "#C0392B"],
+  "background": "#FFFFFF",
+  "foreground": "#2A0F27",
+  "tableAccent": "#4C0743",
+  "good": "#4C0743",
+  "neutral": "#B3A9B1",
+  "bad": "#C0392B",
+  "maximum": "#4C0743",
+  "center": "#C99AC2",
+  "minimum": "#F5EEF4",
+  "textClasses": {
+    "title": { "fontFace": "Arial", "fontSize": 11, "color": "#4C0743" },
+    "header": { "fontFace": "Arial", "fontSize": 10, "color": "#5B4A58" },
+    "label": { "fontFace": "Arial", "fontSize": 9, "color": "#5B4A58" },
+    "callout": { "fontFace": "Arial", "fontSize": 22, "color": "#4C0743" }
+  },
+  "visualStyles": {
+    "*": {
+      "*": {
+        "background": [{ "show": true, "color": { "solid": { "color": "#FFFFFF" } }, "transparency": 0 }],
+        "border": [{ "show": true, "color": { "solid": { "color": "#E6DDE4" } }, "radius": 4 }],
+        "title": [{ "show": true, "fontFamily": "Arial", "fontSize": 11, "bold": true, "fontColor": { "solid": { "color": "#4C0743" } } }],
+        "visualHeader": [{ "show": true, "foreground": { "solid": { "color": "#4C0743" } }, "border": { "solid": { "color": "#E6DDE4" } } }],
+        "dropShadow": [{ "show": false }]
+      }
+    },
+    "page": {
+      "*": {
+        "background": [{ "color": { "solid": { "color": "#F7F3F6" } }, "transparency": 0 }],
+        "outspace": [{ "color": { "solid": { "color": "#D8CFD6" } } }]
+      }
+    },
+    "card": {
+      "*": {
+        "labels": [{ "color": { "solid": { "color": "#4C0743" } }, "fontFamily": "Arial", "fontSize": 22 }],
+        "categoryLabels": [{ "color": { "solid": { "color": "#5B4A58" } }, "fontFamily": "Arial", "fontSize": 9 }]
+      }
+    },
+    "tableEx": {
+      "*": {
+        "columnHeaders": [{ "fontColor": { "solid": { "color": "#FFFFFF" } }, "backColor": { "solid": { "color": "#4C0743" } }, "fontFamily": "Arial", "fontSize": 9, "bold": true }],
+        "values": [{ "fontColorPrimary": { "solid": { "color": "#2A0F27" } }, "backColorPrimary": { "solid": { "color": "#FFFFFF" } }, "backColorSecondary": { "solid": { "color": "#FBF8FA" } }, "fontFamily": "Arial", "fontSize": 9 }],
+        "grid": [{ "gridHorizontal": true, "gridHorizontalColor": { "solid": { "color": "#E6DDE4" } }, "gridVertical": false }]
+      }
+    },
+    "slicer": {
+      "*": {
+        "items": [{ "fontColor": { "solid": { "color": "#2A0F27" } }, "background": { "solid": { "color": "#FFFFFF" } } }]
+      }
+    }
+  }
+}

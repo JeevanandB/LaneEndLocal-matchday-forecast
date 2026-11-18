@@ -1,0 +1,249 @@
+table DimDate
+	lineageTag: 97c63296-729a-4f94-b3a7-36684b4f417a
+	dataCategory: Time
+
+	column date
+		dataType: dateTime
+		isUnique
+		formatString: dd mmm yyyy
+		lineageTag: 12262cc5-83a5-4036-833c-b738416c7ee7
+		summarizeBy: none
+		sourceColumn: date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column day_of_week
+		dataType: string
+		lineageTag: c64ab8b4-77f4-472f-8ae7-b14ce249ed65
+		summarizeBy: none
+		sourceColumn: day_of_week
+		sortByColumn: weekday_no
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_weekend
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 36063e0f-239a-48b8-a95a-121a8987374d
+		summarizeBy: none
+		sourceColumn: is_weekend
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_bank_holiday
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: defaa318-4a24-461e-a2b3-4fef0d557561
+		summarizeBy: none
+		sourceColumn: is_bank_holiday
+
+		annotation SummarizationSetBy = Automatic
+
+	column uni_term
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: b7e8a7aa-a806-492c-aacd-c3cfda3bdbea
+		summarizeBy: none
+		sourceColumn: uni_term
+
+		annotation SummarizationSetBy = Automatic
+
+	column freshers_week
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 21b7e8bb-4291-43fc-a171-72ed06ea6678
+		summarizeBy: none
+		sourceColumn: freshers_week
+
+		annotation SummarizationSetBy = Automatic
+
+	column store_open
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 593510d4-b9c7-4b95-9063-ce148bd2f574
+		summarizeBy: none
+		sourceColumn: store_open
+
+		annotation SummarizationSetBy = Automatic
+
+	column opening_hour
+		dataType: int64
+		formatString: 0
+		lineageTag: dc9d8f78-c51c-4adf-8e89-3c7cf07b5e60
+		summarizeBy: sum
+		sourceColumn: opening_hour
+
+		annotation SummarizationSetBy = Automatic
+
+	column closing_hour
+		dataType: int64
+		formatString: 0
+		lineageTag: 3d833d1b-9be2-49b7-80b0-5817e456097b
+		summarizeBy: sum
+		sourceColumn: closing_hour
+
+		annotation SummarizationSetBy = Automatic
+
+	column temp_max_c
+		dataType: double
+		lineageTag: 2be5aa2f-6722-4cf1-b75d-e6bf80488c9a
+		summarizeBy: sum
+		sourceColumn: temp_max_c
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column temp_min_c
+		dataType: double
+		lineageTag: ed9bb82f-4ade-4788-96e4-59143be4e332
+		summarizeBy: sum
+		sourceColumn: temp_min_c
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column rain_mm
+		dataType: double
+		lineageTag: e2126974-9aa7-4bc2-97ca-178cf7d9d31a
+		summarizeBy: sum
+		sourceColumn: rain_mm
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column year
+		dataType: int64
+		formatString: 0
+		lineageTag: f5c25d2c-9231-4216-8b95-0bc11e5ad532
+		summarizeBy: none
+		sourceColumn: year
+
+		annotation SummarizationSetBy = Automatic
+
+	column month
+		dataType: dateTime
+		formatString: mmm yyyy
+		lineageTag: ff7ffa7b-2466-4c68-96d4-c98e53bcf924
+		summarizeBy: none
+		sourceColumn: month
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column week_start
+		dataType: dateTime
+		formatString: dd/mm/yyyy
+		lineageTag: ff813483-7e4e-4dbb-a153-aa6c80a503d2
+		summarizeBy: none
+		sourceColumn: week_start
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column kickoff
+		dataType: string
+		lineageTag: 0969fde3-47dc-44b0-86b8-fc730714cdc7
+		summarizeBy: none
+		sourceColumn: kickoff
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Time
+
+	column kickoff_band
+		dataType: string
+		lineageTag: e45be56a-7193-46c8-8616-3ad1f3d01341
+		summarizeBy: none
+		sourceColumn: kickoff_band
+
+		annotation SummarizationSetBy = Automatic
+
+	column opponent
+		dataType: string
+		lineageTag: 41889e50-6be7-4ae9-9ab9-346bbd1c41f2
+		summarizeBy: none
+		sourceColumn: opponent
+
+		annotation SummarizationSetBy = Automatic
+
+	column competition
+		dataType: string
+		lineageTag: b75c9174-3160-4516-b76f-eaf09f640377
+		summarizeBy: none
+		sourceColumn: competition
+
+		annotation SummarizationSetBy = Automatic
+
+	column attendance
+		dataType: int64
+		formatString: 0
+		lineageTag: cccde572-7ff7-46ab-b7af-52ea31d6b15b
+		summarizeBy: none
+		sourceColumn: attendance
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_derby
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: f92d4f22-ba80-472a-b1b5-a3c3a4686191
+		summarizeBy: none
+		sourceColumn: is_derby
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_match_day
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 4ee6d380-20a4-4dc2-aa32-3823a3192a9d
+		summarizeBy: none
+		sourceColumn: is_match_day
+
+		annotation SummarizationSetBy = Automatic
+
+	column period
+		dataType: string
+		lineageTag: 65ba4f4f-8f1b-466a-829f-d116c7a82046
+		summarizeBy: none
+		sourceColumn: period
+
+		annotation SummarizationSetBy = Automatic
+
+	column weekday_no = WEEKDAY ( DimDate[date], 2 )
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: c4ac6ba2-a5d1-4572-b685-62cde41f87c3
+		summarizeBy: none
+
+	/// Slicer label for home matches, e.g. Fri 30 Oct 2026 · 20:00 v Wrexham
+	column match_label = IF ( DimDate[is_match_day], FORMAT ( DimDate[date], "ddd dd mmm yyyy" ) & " · " & DimDate[kickoff] & " v " & DimDate[opponent] )
+		dataType: string
+		lineageTag: a479dec4-5069-4b8f-bdf9-a890a65cf869
+
+	/// Short date label for categorical chart axes.
+	column date_label = FORMAT ( DimDate[date], "dd mmm yy" )
+		dataType: string
+		lineageTag: eb3360cb-0d57-45cb-bc5f-564fa6342164
+		sortByColumn: date
+
+	partition DimDate = m
+		mode: import
+		source =
+				let
+				  Source = Excel.Workbook(File.Contents(DataFile), null, true),
+				  #"Navigation 1" = Source{[Item = "DimDate", Kind = "Sheet"]}[Data],
+				  #"Promoted headers" = Table.PromoteHeaders(#"Navigation 1", [PromoteAllScalars = true]),
+				  #"Changed column type" = Table.TransformColumnTypes(#"Promoted headers", {{"date", type date}, {"day_of_week", type text}, {"is_weekend", type logical}, {"is_bank_holiday", type logical}, {"uni_term", type logical}, {"freshers_week", type logical}, {"store_open", type logical}, {"opening_hour", Int64.Type}, {"closing_hour", Int64.Type}, {"temp_max_c", type number}, {"temp_min_c", type number}, {"rain_mm", type number}, {"year", Int64.Type}, {"month", type date}, {"week_start", type date}, {"kickoff", type text}, {"kickoff_band", type text}, {"opponent", type text}, {"competition", type text}, {"attendance", Int64.Type}, {"is_derby", type logical}, {"is_match_day", type logical}, {"period", type text}}, "en-US")
+				in
+				  #"Changed column type"
+
+	annotation PBI_ResultType = Table
+

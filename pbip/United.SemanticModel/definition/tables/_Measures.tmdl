@@ -1,0 +1,576 @@
+/// All report measures, grouped in display folders.
+table _Measures
+	lineageTag: c6f4d21a-e2d6-469e-be75-09280d5d6d85
+
+	measure Revenue = SUM ( FactSales[revenue] )
+		formatString: £#,##0
+		displayFolder: 1 Sales
+		lineageTag: 4170aaec-ac9c-4412-95be-10773c952cd6
+
+	measure Units = SUM ( FactSales[units_sold] )
+		formatString: #,##0
+		displayFolder: 1 Sales
+		lineageTag: 456f0c91-239d-4725-82b7-5c58b32c3797
+
+	measure 'Trading Days' = CALCULATE ( DISTINCTCOUNT ( FactSales[date] ) )
+		formatString: #,##0
+		displayFolder: 1 Sales
+		lineageTag: 8787b57f-876c-493a-8e03-691ceba74059
+
+	measure 'Avg Daily Revenue' = DIVIDE ( [Revenue], [Trading Days] )
+		formatString: £#,##0
+		displayFolder: 1 Sales
+		lineageTag: dfc2d80c-cfd0-4370-8555-5224c657a4f7
+
+	measure Transactions = SUM ( FactHourly[transactions] )
+		formatString: #,##0
+		displayFolder: 1 Sales
+		lineageTag: 0eb895a8-7334-4e72-b7e2-4cd3db83c89b
+
+	measure 'Avg Daily Transactions' = DIVIDE ( [Transactions], DISTINCTCOUNT ( FactHourly[date] ) )
+		formatString: #,##0
+		displayFolder: 1 Sales
+		lineageTag: 42ccaeb0-65ea-4380-a057-e4b0c4054c6e
+
+	measure 'Avg Hourly Revenue' = DIVIDE ( SUM ( FactHourly[revenue] ), DISTINCTCOUNT ( FactHourly[date] ) )
+		formatString: £#,##0
+		displayFolder: 1 Sales
+		lineageTag: 720046d8-6f4a-4411-8c2b-0e611b3d2aa3
+
+	/// Average daily revenue on Saturdays with a 15:00 home kick-off, training period.
+	measure 'Rev 3pm Sat Match' = CALCULATE ( [Avg Daily Revenue], REMOVEFILTERS ( DimDate ), DimDate[period] = "Train", DimDate[is_match_day] = TRUE (), DimDate[kickoff] = "15:00", DimDate[day_of_week] = "Saturday" )
+		formatString: £#,##0
+		displayFolder: 2 Match-day spike
+		lineageTag: e19da865-4c7a-4dc0-89a4-a4a264559d3a
+
+	/// Average daily revenue on open Saturdays with no home match, training period.
+	measure 'Rev Normal Sat' = CALCULATE ( [Avg Daily Revenue], REMOVEFILTERS ( DimDate ), DimDate[period] = "Train", DimDate[is_match_day] = FALSE (), DimDate[day_of_week] = "Saturday", DimDate[store_open] = TRUE () )
+		formatString: £#,##0
+		displayFolder: 2 Match-day spike
+		lineageTag: a56b7439-9226-415e-a1bf-1a8d2ad31abf
+
+	measure 'Rev Uplift %' = DIVIDE ( [Rev 3pm Sat Match], [Rev Normal Sat] ) - 1
+		formatString: \+0.0%;-0.0%;0.0%
+		displayFolder: 2 Match-day spike
+		lineageTag: 4b976d2a-2f81-4048-8573-5dbc974799ca
+
+	measure 'Tx 3pm Sat Match' = CALCULATE ( [Avg Daily Transactions], REMOVEFILTERS ( DimDate ), DimDate[period] = "Train", DimDate[is_match_day] = TRUE (), DimDate[kickoff] = "15:00", DimDate[day_of_week] = "Saturday" )
+		formatString: #,##0
+		displayFolder: 2 Match-day spike
+		lineageTag: 292f9de5-1134-4e66-94af-d3983c43f9cc
+
+	measure 'Tx Normal Sat' = CALCULATE ( [Avg Daily Transactions], REMOVEFILTERS ( DimDate ), DimDate[period] = "Train", DimDate[is_match_day] = FALSE (), DimDate[day_of_week] = "Saturday", DimDate[store_open] = TRUE () )
+		formatString: #,##0
+		displayFolder: 2 Match-day spike
+		lineageTag: 9d8dde98-cef3-4a79-8ebb-9ab647282b60
+
+	measure 'Tx Uplift %' = DIVIDE ( [Tx 3pm Sat Match], [Tx Normal Sat] ) - 1
+		formatString: \+0.0%;-0.0%;0.0%
+		displayFolder: 2 Match-day spike
+		lineageTag: 46c0fcd0-54e7-4639-a2e1-8f3a30dc6a9a
+
+	/// Average revenue per hour on training-period match days (follows the kick-off band slicer).
+	measure 'Hourly Rev Match' = CALCULATE ( [Avg Hourly Revenue], DimDate[is_match_day] = TRUE (), DimDate[period] = "Train" )
+		formatString: £#,##0
+		displayFolder: 2 Match-day spike
+		lineageTag: 03776907-2544-41be-913f-41e783ce2b75
+
+	/// Same weekdays as the selected match days, no match, training period.
+	measure 'Hourly Rev Normal' =
+			VAR wd = CALCULATETABLE ( VALUES ( DimDate[day_of_week] ), DimDate[is_match_day] = TRUE (), DimDate[period] = "Train" )
+			RETURN
+			    CALCULATE ( [Avg Hourly Revenue], REMOVEFILTERS ( DimDate[kickoff_band] ), DimDate[is_match_day] = FALSE (), DimDate[store_open] = TRUE (), DimDate[period] = "Train", TREATAS ( wd, DimDate[day_of_week] ) )
+		formatString: £#,##0
+		displayFolder: 2 Match-day spike
+		lineageTag: 6f1f1a70-545b-48bd-bd7b-b36ce609c8d0
+
+	measure 'Hourly Diff' = [Hourly Rev Match] - [Hourly Rev Normal]
+		formatString: \+£#,##0;-£#,##0;£0
+		displayFolder: 2 Match-day spike
+		lineageTag: fa83cc24-a3a5-4a35-8529-44153e6405fc
+
+	measure 'Hourly Ratio' = DIVIDE ( [Hourly Rev Match], [Hourly Rev Normal] )
+		formatString: 0.0"×"
+		displayFolder: 2 Match-day spike
+		lineageTag: 8ac42762-0ac2-4f7f-8921-d6e0bb0a15cf
+
+	/// Typical kick-off hour for the selected kick-off band (median, training matches).
+	measure 'Kickoff Hour' = CALCULATE ( ROUNDDOWN ( MEDIANX ( FILTER ( DimDate, DimDate[kickoff] <> "" ), VALUE ( LEFT ( DimDate[kickoff], 2 ) ) ), 0 ), DimDate[is_match_day] = TRUE (), DimDate[period] = "Train" )
+		formatString: 0
+		displayFolder: 2 Match-day spike
+		lineageTag: c08a11bf-f093-4435-bd85-145e33de84d3
+
+	/// Shading column for the 3 hours before kick-off and the kick-off hour.
+	measure 'Pre-match Rush' =
+			VAR k = [Kickoff Hour]
+			VAR h = SELECTEDVALUE ( DimHour[hour] )
+			VAR ceil = MAXX ( ALL ( DimHour ), [Hourly Rev Match] ) * 1.08
+			RETURN IF ( NOT ISBLANK ( h ) && h >= k - 3 && h <= k, ceil )
+		formatString: £#,##0
+		displayFolder: 2 Match-day spike
+		lineageTag: 8310d9a9-41b1-4eae-9947-145172e7c8da
+
+	measure 'Hour Label' =
+			VAR h = SELECTEDVALUE ( DimHour[hour] )
+			VAR k = [Kickoff Hour]
+			RETURN FORMAT ( h, "00" ) & ":00 · " & IF ( h < k, ( k - h ) & "h before kick-off", IF ( h = k, "kick-off hour", ( h - k ) & "h after kick-off" ) )
+		displayFolder: 2 Match-day spike
+		lineageTag: 95ebb5e3-b461-4dcf-b0bd-108c97fb66ff
+
+	measure 'Band Caption' =
+			VAR b = SELECTEDVALUE ( DimDate[kickoff_band], "All kick-offs" )
+			VAR n = CALCULATE ( COUNTROWS ( DimDate ), DimDate[is_match_day] = TRUE (), DimDate[period] = "Train" )
+			RETURN b & " · average of " & n & " home matches vs the same weekday with no match"
+		displayFolder: 2 Match-day spike
+		lineageTag: aaa35a1b-f631-4c83-8f60-0ee44ac9b651
+
+	measure 'Home Matches' = COUNTROWS ( DimFixture )
+		formatString: 0
+		displayFolder: 2 Match-day spike
+		lineageTag: c14c11e1-8ac1-4588-9456-8aa1d62ca167
+
+	measure 'Peak Hour No' =
+			VAR t = ADDCOLUMNS ( ALL ( DimHour[hour] ), "@m", CALCULATE ( [Avg Hourly Revenue], REMOVEFILTERS ( DimDate ), DimDate[period] = "Train", DimDate[is_match_day] = TRUE (), DimDate[kickoff] = "15:00", DimDate[day_of_week] = "Saturday" ) )
+			RETURN MAXX ( TOPN ( 1, t, [@m], DESC ), DimHour[hour] )
+		formatString: 0
+		isHidden
+		displayFolder: 2 Match-day spike
+		lineageTag: 887ed3e1-615f-4fb6-8792-eb8409aac253
+
+	measure 'Peak Hour (3pm Sat)' = FORMAT ( [Peak Hour No], "00" ) & ":00"
+		displayFolder: 2 Match-day spike
+		lineageTag: df4ba7fb-3122-407b-a6d7-98061474169e
+
+	measure 'Peak Hour Revenue' =
+			VAR h = [Peak Hour No]
+			RETURN CALCULATE ( [Avg Hourly Revenue], REMOVEFILTERS ( DimDate ), REMOVEFILTERS ( DimHour ), DimHour[hour] = h, DimDate[period] = "Train", DimDate[is_match_day] = TRUE (), DimDate[kickoff] = "15:00", DimDate[day_of_week] = "Saturday" )
+		formatString: £#,##0
+		displayFolder: 2 Match-day spike
+		lineageTag: a7d5b08d-eec0-4eb0-83cc-f0432ad2d052
+
+	measure 'Peak Hour Normal' =
+			VAR h = [Peak Hour No]
+			RETURN CALCULATE ( [Avg Hourly Revenue], REMOVEFILTERS ( DimDate ), REMOVEFILTERS ( DimHour ), DimHour[hour] = h, DimDate[period] = "Train", DimDate[is_match_day] = FALSE (), DimDate[day_of_week] = "Saturday", DimDate[store_open] = TRUE () )
+		formatString: £#,##0
+		displayFolder: 2 Match-day spike
+		lineageTag: 8c337a1f-e995-4a44-8b9c-95f1c5c646bb
+
+	/// Peak-hour revenue on 3pm Saturday matches ÷ the same hour on normal Saturdays. Rounded to 2 dp first, as in the HTML (4.147 → 4.15 → 4.2×).
+	measure 'Peak Ratio' = ROUND ( DIVIDE ( [Peak Hour Revenue], [Peak Hour Normal] ), 2 )
+		formatString: 0.0"×"
+		displayFolder: 2 Match-day spike
+		lineageTag: 6fb461f7-c016-47ca-bb52-29f0f41b98fe
+
+	measure 'Rev Subline' = "▲ " & FORMAT ( [Rev Uplift %], "+0%" ) & " vs " & FORMAT ( [Rev Normal Sat], "£#,##0" ) & " normal Saturday"
+		displayFolder: 2 Match-day spike
+		lineageTag: 3fc7b41f-2ed6-4b3c-9131-92ce0c5a5b84
+
+	measure 'Tx Subline' = "▲ " & FORMAT ( [Tx Uplift %], "+0%" ) & " vs " & FORMAT ( [Tx Normal Sat], "#,##0" ) & " normal Saturday"
+		displayFolder: 2 Match-day spike
+		lineageTag: 6ebb90bf-68ce-4ebd-b976-f994443d70c0
+
+	measure 'Peak Subline' = "▲ " & FORMAT ( [Peak Ratio], "0.0" ) & "× · " & FORMAT ( [Peak Hour Revenue], "£#,##0" ) & " in one hour"
+		displayFolder: 2 Match-day spike
+		lineageTag: b29fb654-0d5b-428d-b390-ef32b13fb530
+
+	measure 'Matches Subline' = "Jan 2023 – Oct 2026 · league, cups, play-off"
+		displayFolder: 2 Match-day spike
+		lineageTag: 613f1f3e-94d2-4c2d-9fcd-0446b7274cc8
+
+	/// Match-day units ÷ normal-day units at a 27,500 crowd: 1 + β × 27,500 / 30,000.
+	measure 'Uplift (typical crowd)' = MAX ( SkuMatchUplift[uplift_at_27500] )
+		formatString: 0.0"×"
+		displayFolder: 3 Uplift
+		lineageTag: e066346c-61d9-4763-9f33-13b4a75746bc
+
+	/// Share of training match days on which the product sold out.
+	measure 'Sell-out Rate' = MAX ( SkuMatchUplift[match_sellout_rate] )
+		formatString: 0%
+		displayFolder: 3 Uplift
+		lineageTag: 760150b2-134a-42ac-8835-f0aa1069d49d
+
+	measure 'Uplift Colour' = SWITCH ( TRUE (), SELECTEDVALUE ( SkuMatchUplift[demand_censored] ) = TRUE (), "#C0392B", [Uplift (typical crowd)] < 1, "#B3A9B1", "#4C0743" )
+		displayFolder: 3 Uplift
+		lineageTag: f340303e-105a-4741-8557-146511e5bd54
+
+	measure 'Uplift Note' =
+			VAR u = [Uplift (typical crowd)]
+			RETURN SWITCH ( TRUE (), SELECTEDVALUE ( SkuMatchUplift[demand_censored] ) = TRUE (), "Demand hidden: it usually runs out, so the real uplift is higher.", u < 1, "Falls on match days: regulars avoid the crowds.", "A normal day's 100 units become about " & ROUND ( u * 100, 0 ) & "." )
+		displayFolder: 3 Uplift
+		lineageTag: cb3e200e-6e2b-45df-ba74-f1b5ca84387f
+
+	measure 'Forecast Units' = SUM ( FactForecast[forecast_units] )
+		formatString: #,##0
+		displayFolder: 4 Forecast
+		lineageTag: 704bef4a-7d81-4772-b0c7-660185f37205
+
+	measure 'Actual Units' = SUM ( FactForecast[actual_units] )
+		formatString: #,##0
+		displayFolder: 4 Forecast
+		lineageTag: b8ef79f0-e764-4605-89fa-805155ec6272
+
+	/// Owner's rule: average of the last 28 days.
+	measure 'Owner Rule Units' = SUM ( FactForecast[naive_28day_avg] )
+		formatString: #,##0
+		displayFolder: 4 Forecast
+		lineageTag: 256e20c8-dcfe-45a5-9eba-5c02a72f1698
+
+	/// Naive benchmark: same day last week.
+	measure 'Last Week Units' = SUM ( FactForecast[naive_last_week] )
+		formatString: #,##0
+		displayFolder: 4 Forecast
+		lineageTag: 395e1de9-22fc-4863-8626-4b9ba6e09851
+
+	measure 'Normal Day Units' = SUM ( FactForecast[baseline_units] )
+		formatString: #,##0
+		displayFolder: 4 Forecast
+		lineageTag: 35e54672-682b-4e97-8c3e-d3d666014082
+
+	measure 'Abs Error Model' = SUMX ( FactForecast, ABS ( FactForecast[forecast_units] - FactForecast[actual_units] ) )
+		formatString: #,##0
+		displayFolder: 4 Forecast\Errors
+		lineageTag: 1e9a5128-1492-41db-9252-70513976d697
+
+	measure 'Abs Error Owner' = SUMX ( FactForecast, ABS ( FactForecast[naive_28day_avg] - FactForecast[actual_units] ) )
+		formatString: #,##0
+		displayFolder: 4 Forecast\Errors
+		lineageTag: f07f7c1c-9f68-4e8f-ac01-f392db9ed6a9
+
+	measure 'Abs Error Last Week' = SUMX ( FactForecast, ABS ( FactForecast[naive_last_week] - FactForecast[actual_units] ) )
+		formatString: #,##0
+		displayFolder: 4 Forecast\Errors
+		lineageTag: ec13b59b-9cee-4c11-aa72-992f2eadc723
+
+	measure 'WAPE Model' = DIVIDE ( [Abs Error Model], [Actual Units] )
+		formatString: 0.0%
+		displayFolder: 4 Forecast\Errors
+		lineageTag: cd20d4d5-9363-48b5-b4f3-2cb98b871dfe
+
+	measure 'WAPE Owner' = DIVIDE ( [Abs Error Owner], [Actual Units] )
+		formatString: 0.0%
+		displayFolder: 4 Forecast\Errors
+		lineageTag: 96eb3967-16b4-46cb-a9b7-bb55bb7e2e2a
+
+	measure 'WAPE Last Week' = DIVIDE ( [Abs Error Last Week], [Actual Units] )
+		formatString: 0.0%
+		displayFolder: 4 Forecast\Errors
+		lineageTag: 2b057358-bc60-49f6-8334-55929b20ab7f
+
+	measure 'WAPE Model (match days)' = CALCULATE ( [WAPE Model], FactForecast[is_match_day] = TRUE (), REMOVEFILTERS ( DimDate ) )
+		formatString: 0.0%
+		displayFolder: 4 Forecast\Errors
+		lineageTag: 35968dea-51ac-4b9e-983d-728f66c1113b
+
+	measure 'WAPE Owner (match days)' = CALCULATE ( [WAPE Owner], FactForecast[is_match_day] = TRUE (), REMOVEFILTERS ( DimDate ) )
+		formatString: 0.0%
+		displayFolder: 4 Forecast\Errors
+		lineageTag: c2884903-dcb3-471a-8546-6f3f54a3019a
+
+	measure 'WAPE Last Week (match days)' = CALCULATE ( [WAPE Last Week], FactForecast[is_match_day] = TRUE (), REMOVEFILTERS ( DimDate ) )
+		formatString: 0.0%
+		displayFolder: 4 Forecast\Errors
+		lineageTag: f9a8b4c2-9233-4f01-922c-5c09406a1082
+
+	measure 'WAPE Model (normal days)' = CALCULATE ( [WAPE Model], FactForecast[is_match_day] = FALSE (), REMOVEFILTERS ( DimDate ) )
+		formatString: 0.0%
+		displayFolder: 4 Forecast\Errors
+		lineageTag: ae43a0b9-22b0-40c8-9d87-f2f347d17264
+
+	measure 'WAPE Owner (normal days)' = CALCULATE ( [WAPE Owner], FactForecast[is_match_day] = FALSE (), REMOVEFILTERS ( DimDate ) )
+		formatString: 0.0%
+		displayFolder: 4 Forecast\Errors
+		lineageTag: 0ada2062-4ee9-45e9-a5ef-fdd37ec77476
+
+	measure 'WAPE Gain (pts)' = ( [WAPE Owner (match days)] - [WAPE Model (match days)] ) * 100
+		formatString: 0.0
+		displayFolder: 4 Forecast\Errors
+		lineageTag: 4d615e02-c37a-40f1-b0f9-424e4239d687
+
+	measure 'Forecast Bias %' = DIVIDE ( [Forecast Units] - [Actual Units], [Actual Units] )
+		formatString: \+0.0%;-0.0%;0.0%
+		displayFolder: 4 Forecast\Errors
+		lineageTag: b77a4bbd-e23a-4fc7-ad74-d445ab22c5d4
+
+	measure 'Forecast Bias % (match days)' = CALCULATE ( [Forecast Bias %], FactForecast[is_match_day] = TRUE (), REMOVEFILTERS ( DimDate ) )
+		formatString: \+0.0%;-0.0%;0.0%
+		displayFolder: 4 Forecast\Errors
+		lineageTag: 0ee9ac4e-936f-4251-abb9-53387b3356ee
+
+	measure 'WAPE Subline' = "▼ " & FORMAT ( [WAPE Gain (pts)], "0.0" ) & " pts vs owner's rule " & FORMAT ( [WAPE Owner (match days)], "0.0%" )
+		displayFolder: 4 Forecast\Cards
+		lineageTag: c8c6e867-4855-4540-aabf-9687a5d415f4
+
+	measure 'Products Sold Out' = CALCULATE ( COUNTROWS ( FactForecast ), FactForecast[actual_stockout] = 1 )
+		formatString: 0
+		displayFolder: 4 Forecast
+		lineageTag: e6870be9-bb29-4db3-925d-71f3c32eb9a9
+
+	/// Stock at opening on the day.
+	measure 'Stock On Shelf' = SUM ( FactSales[stock_open] )
+		formatString: #,##0
+		displayFolder: 4 Forecast
+		lineageTag: eaab8c36-b181-4d00-953a-ca35e3c969b5
+
+	measure 'Actual Colour' = IF ( SUM ( FactForecast[actual_stockout] ) > 0, "#C0392B", "#A0559A" )
+		displayFolder: 4 Forecast
+		lineageTag: 8fad060d-d667-4245-9986-58356b9d90ec
+
+	measure 'Key Forecast Units' = CALCULATE ( [Forecast Units], DimProduct[is_key_line] = TRUE () )
+		formatString: #,##0" units"
+		displayFolder: 4 Forecast\Cards
+		lineageTag: e48ad1fa-37c0-4b90-b2f0-6916b2bf1184
+
+	measure 'Key Owner Units' = CALCULATE ( [Owner Rule Units], DimProduct[is_key_line] = TRUE () )
+		formatString: #,##0
+		displayFolder: 4 Forecast\Cards
+		lineageTag: fc9efbe5-b84f-41af-ac53-9d3279d55499
+
+	measure 'Key Actual Units' = CALCULATE ( [Actual Units], DimProduct[is_key_line] = TRUE () )
+		formatString: #,##0
+		displayFolder: 4 Forecast\Cards
+		lineageTag: 968162b1-954e-409d-9d00-cb58c3b558db
+
+	measure 'Forecast Subline' = "owner's rule " & FORMAT ( [Key Owner Units], "#,##0" ) & " · sold " & FORMAT ( [Key Actual Units], "#,##0" )
+		displayFolder: 4 Forecast\Cards
+		lineageTag: 9f4c3232-f1c4-4271-9b72-787c2d34c33e
+
+	measure 'Selected Match' = SELECTEDVALUE ( DimDate[match_label], "Choose a home match" )
+		displayFolder: 4 Forecast\Cards
+		lineageTag: e0abd000-0163-4f84-9fcc-4a537615a4ac
+
+	measure 'Match Subline' =
+			VAR d = MAX ( DimDate[date] )
+			VAR src = LOOKUPVALUE ( DimFixture[kickoff_source], DimFixture[date], d )
+			RETURN IF ( HASONEVALUE ( DimDate[date] ), MAX ( DimDate[competition] ) & IF ( src = "estimated", " · kick-off time estimated", " · " & MAX ( DimDate[kickoff_band] ) ) )
+		displayFolder: 4 Forecast\Cards
+		lineageTag: 7823a582-60e1-4abe-a45b-62060e85f260
+
+	measure Crowd = IF ( HASONEVALUE ( DimDate[date] ), MAX ( DimDate[attendance] ) )
+		formatString: #,##0
+		displayFolder: 4 Forecast\Cards
+		lineageTag: 7475cdf6-957c-4ad0-a3a6-9a7ae88524a0
+
+	measure 'Crowd Subline' =
+			VAR d = MAX ( DimDate[date] )
+			VAR src = LOOKUPVALUE ( DimFixture[attendance_source], DimFixture[date], d )
+			RETURN IF ( src = "estimated", "estimated (not yet published)", "reported attendance" )
+		displayFolder: 4 Forecast\Cards
+		lineageTag: 1b9489e5-25c9-43a9-a0c1-9ab7e450659c
+
+	measure 'Insight P2 Forecast' =
+			VAR e = ROUND ( ( DIVIDE ( [Key Forecast Units], [Key Actual Units] ) - 1 ) * 100, 0 )
+			VAR n = ROUND ( ( DIVIDE ( [Key Owner Units], [Key Actual Units] ) - 1 ) * 100, 0 )
+			RETURN "Forecast " & IF ( e >= 0, "+" ) & e & "% vs sales for the key lines. The owner's rule was " & n & "%."
+		displayFolder: 4 Forecast\Cards
+		lineageTag: 2035b4d3-d739-4ebe-97c3-45b10078f917
+
+	measure 'Insight P2 Sold Out' =
+			VAR outs = FILTER ( CALCULATETABLE ( VALUES ( DimProduct[product_name] ), DimProduct[is_key_line] = TRUE () ), CALCULATE ( SUM ( FactForecast[actual_stockout] ) ) > 0 )
+			RETURN IF ( COUNTROWS ( outs ) > 0, "Sold out: " & CONCATENATEX ( outs, DimProduct[product_name], ", " ) & ". Those sales are a floor, not true demand.", "No key line sold out at this match." )
+		displayFolder: 4 Forecast\Cards
+		lineageTag: d0a306f5-c392-4475-8101-f8b116c4b19d
+
+	measure 'Insight P2 Crowd' =
+			VAR a = [Crowd]
+			RETURN "Crowd " & FORMAT ( a, "#,##0" ) & IF ( a < 20000, ": a small crowd, so a smaller lift.", ": a full-size match-day lift." )
+		displayFolder: 4 Forecast\Cards
+		lineageTag: b3c7e8ef-2a5a-416e-b4b8-5da6a8028480
+
+	/// Light-plum column on home match days for the daily chart.
+	measure 'Home Match Marker' = IF ( SELECTEDVALUE ( DimDate[is_match_day] ) = TRUE (), MAXX ( CALCULATETABLE ( VALUES ( DimDate[date] ), REMOVEFILTERS ( DimDate ), LEFT ( DimDate[period], 4 ) = "Test" ), [Actual Units] ) * 1.1 )
+		formatString: #,##0
+		displayFolder: 4 Forecast
+		lineageTag: 71444514-a421-430c-8552-fd57ee617194
+
+	measure 'SKUs Needing Action' = CALCULATE ( COUNTROWS ( FactOrderPlan ), FactOrderPlan[status] <> "OK" )
+		formatString: 0
+		displayFolder: 5 Order planner
+		lineageTag: 838fbc08-dc6f-420e-ae15-9e90c8ff5184
+
+	measure 'Stocked Lines' = COUNTROWS ( FactOrderPlan )
+		formatString: 0
+		displayFolder: 5 Order planner
+		lineageTag: 74c369f3-e754-4065-96bc-5dbc1dd86e29
+
+	measure 'Actions Subline' = "of " & [Stocked Lines] & " stocked lines"
+		displayFolder: 5 Order planner
+		lineageTag: 598f2f9f-27bb-4cad-b081-4668d6627852
+
+	/// Shelf value of extra units recommended for lines flagged Order more / Sells out / Demand hidden.
+	measure 'Add Value' = SUMX ( FILTER ( FactOrderPlan, FactOrderPlan[status] IN { "Order more", "Sells out - order more", "Demand hidden - trial +50%" } ), MAX ( 0, FactOrderPlan[recommended_order] - FactOrderPlan[usual_order] ) * FactOrderPlan[shelf_price] )
+		formatString: £#,##0
+		displayFolder: 5 Order planner
+		lineageTag: 992deb1b-9a78-4901-885a-b2be731b6227
+
+	/// Shelf value of units ordered beyond what is needed (Over-ordered lines).
+	measure 'Cut Value' = SUMX ( FILTER ( FactOrderPlan, FactOrderPlan[status] = "Over-ordered" ), MAX ( 0, FactOrderPlan[usual_order] - FactOrderPlan[recommended_order] ) * FactOrderPlan[shelf_price] )
+		formatString: £#,##0
+		displayFolder: 5 Order planner
+		lineageTag: bbce6b02-9493-4b8b-aa27-75517a084aab
+
+	measure 'Add Cut Text' = FORMAT ( [Add Value], "£#,##0" ) & " · " & FORMAT ( [Cut Value], "£#,##0" )
+		displayFolder: 5 Order planner
+		lineageTag: 31901de9-f915-47df-96c1-efea2e14b881
+
+	measure 'Ran Out' = CALCULATE ( COUNTROWS ( FactOrderPlan ), FactOrderPlan[actual_sold_out] = 1 ) + 0
+		formatString: 0
+		displayFolder: 5 Order planner
+		lineageTag: 751478a4-1e93-445d-b495-37caafe8db7a
+
+	measure 'Order Placed Subline' =
+			VAR o = CALCULATE ( MAX ( FactOrderPlan[order_for] ), DimProduct[sku_id] = "SKU100" )
+			RETURN IF ( HASONEVALUE ( DimDate[date] ), "order placed " & SUBSTITUTE ( o, " delivery", "" ) & " for ambient lines" )
+		displayFolder: 5 Order planner
+		lineageTag: 2abe5df4-625c-4821-b2a1-ae95bca4dd37
+
+	measure 'Status Colour' = SWITCH ( SELECTEDVALUE ( FactOrderPlan[status] ), "Demand hidden - trial +50%", "#C0392B", "Sells out - order more", "#C0392B", "Order more", "#6E1A63", "Over-ordered", "#8E3A83", "#B3A9B1" )
+		displayFolder: 5 Order planner
+		lineageTag: c40611bd-ddfd-478c-83ce-78755a1dfad1
+
+	measure 'Sold Colour' = IF ( SUM ( FactSales[stockout_flag] ) > 0 || MAX ( FactOrderPlan[actual_sold_out] ) = 1, "#C0392B", "#4C0743" )
+		displayFolder: 5 Order planner
+		lineageTag: 0407cf42-fa3b-474f-afa1-d119f5d908c2
+
+	measure 'Recommend (change)' =
+			VAR r = SUM ( FactOrderPlan[recommended_order] )
+			VAR d = r - SUM ( FactOrderPlan[usual_order] )
+			RETURN IF ( HASONEVALUE ( FactOrderPlan[sku_id] ), FORMAT ( r, "#,##0" ) & "  (" & IF ( d > 0, "+" ) & FORMAT ( d, "#,##0" ) & ")" )
+		displayFolder: 5 Order planner
+		lineageTag: e537a6bd-0b20-43b3-b324-ce43a801268a
+
+	measure 'Sold Text' = IF ( HASONEVALUE ( FactOrderPlan[sku_id] ), FORMAT ( SUM ( FactOrderPlan[actual_match_day_units] ), "#,##0" ) & IF ( MAX ( FactOrderPlan[actual_sold_out] ) = 1, " · sold out" ) )
+		displayFolder: 5 Order planner
+		lineageTag: ab7dfee4-3d78-42ba-8ced-a5811f12840b
+
+	measure 'Sold Text Colour' = IF ( MAX ( FactOrderPlan[actual_sold_out] ) = 1, "#C0392B", "#2A0F27" )
+		displayFolder: 5 Order planner
+		lineageTag: 40938840-afab-417c-b278-3ceae7443e7c
+
+	measure 'Status Rule' = SWITCH ( SELECTEDVALUE ( FactOrderPlan[status] ), "Order more", "Recommendation is 15%+ above the usual order.", "Over-ordered", "Usual order is 1.5× the recommendation.", "Sells out - order more", "Runs out on most match days.", "Demand hidden - trial +50%", "Sold out almost every match, so the data can't show true demand.", "Usual order is close to the recommendation." )
+		displayFolder: 5 Order planner
+		lineageTag: ba3d5c60-8a04-40d2-97e5-786841c677ff
+
+	/// 1 when the row belongs to the PlanView button selected (Needs action / Match-sensitive 1.4×+ / All stocked).
+	measure 'Show In Plan' =
+			VAR v = SELECTEDVALUE ( PlanView[view], "Needs action" )
+			VAR st = SELECTEDVALUE ( FactOrderPlan[status] )
+			RETURN IF ( ISEMPTY ( FactOrderPlan ), 0, SWITCH ( v, "Needs action", IF ( st <> "OK", 1, 0 ), "Match-sensitive 1.4×+", IF ( [Uplift (typical crowd)] >= 1.4, 1, 0 ), 1 ) )
+		formatString: 0
+		displayFolder: 5 Order planner
+		lineageTag: 30d15de5-4ce8-4dd3-abb8-339018513c86
+
+	measure 'Product Detail' = IF ( HASONEVALUE ( FactOrderPlan[sku_id] ), VALUES ( FactOrderPlan[sku_id] ) & " · " & SUBSTITUTE ( MAX ( FactOrderPlan[order_for] ), " delivery", "" ) )
+		displayFolder: 5 Order planner
+		lineageTag: 5827dac7-cb61-4cde-b2a5-92d5e70521ab
+
+	measure 'Selected SKU' = IF ( HASONEVALUE ( DimProduct[sku_id] ), VALUES ( DimProduct[sku_id] ), "SKU108" )
+		isHidden
+		displayFolder: 5 Order planner\Detail
+		lineageTag: 7894a26a-3d6e-429c-bfa7-e786de32d8ea
+
+	measure 'Selected Product' =
+			VAR s = [Selected SKU]
+			RETURN UPPER ( LOOKUPVALUE ( DimProduct[product_name], DimProduct[sku_id], s ) ) & " · RECENT MATCH DAYS"
+		displayFolder: 5 Order planner\Detail
+		lineageTag: 0fafd74e-d191-4e83-a768-7cdbda7f847a
+
+	measure 'Hist Stock At Opening' =
+			VAR s = [Selected SKU]
+			RETURN CALCULATE ( SUM ( FactSales[stock_open] ), REMOVEFILTERS ( DimProduct ), DimProduct[sku_id] = s )
+		formatString: #,##0
+		displayFolder: 5 Order planner\Detail
+		lineageTag: 197d27dc-c86e-43fb-bd05-992344c513b6
+
+	measure 'Hist Units Sold' =
+			VAR s = [Selected SKU]
+			RETURN CALCULATE ( SUM ( FactSales[units_sold] ), REMOVEFILTERS ( DimProduct ), DimProduct[sku_id] = s )
+		formatString: #,##0
+		displayFolder: 5 Order planner\Detail
+		lineageTag: 76cae523-e750-418e-b1b1-8170b32ed0c6
+
+	measure 'Hist Sold Colour' =
+			VAR s = [Selected SKU]
+			VAR so = CALCULATE ( SUM ( FactSales[stockout_flag] ), REMOVEFILTERS ( DimProduct ), DimProduct[sku_id] = s )
+			RETURN IF ( so > 0, "#C0392B", "#4C0743" )
+		displayFolder: 5 Order planner\Detail
+		lineageTag: facd3a26-f815-4daa-8545-4b8c3ea3f4aa
+
+	measure 'SKU Forecast Units' =
+			VAR s = [Selected SKU]
+			RETURN CALCULATE ( [Forecast Units], REMOVEFILTERS ( DimProduct ), DimProduct[sku_id] = s )
+		formatString: #,##0
+		displayFolder: 5 Order planner\Detail
+		lineageTag: 3a63560b-6cc6-4671-94db-e6cf02eb56fe
+
+	measure 'SKU Actual Units' =
+			VAR s = [Selected SKU]
+			RETURN CALCULATE ( [Actual Units], REMOVEFILTERS ( DimProduct ), DimProduct[sku_id] = s )
+		formatString: #,##0
+		displayFolder: 5 Order planner\Detail
+		lineageTag: cb88a83c-627c-4479-9ec6-61e020237049
+
+	/// Actual units on days the product sold out (shown as red markers only).
+	measure 'SKU Sold-out Marker' =
+			VAR s = [Selected SKU]
+			VAR so = CALCULATE ( SUM ( FactForecast[actual_stockout] ), REMOVEFILTERS ( DimProduct ), DimProduct[sku_id] = s )
+			RETURN IF ( so > 0, [SKU Actual Units] )
+		formatString: #,##0
+		displayFolder: 5 Order planner\Detail
+		lineageTag: 8b4fe0ca-8d9b-440d-99c9-bef261ce56eb
+
+	measure 'SKU Test Caption' =
+			VAR s = [Selected SKU]
+			VAR t = CALCULATETABLE ( FactForecast, REMOVEFILTERS ( DimProduct ), REMOVEFILTERS ( DimDate ), DimProduct[sku_id] = s )
+			VAR act = SUMX ( t, FactForecast[actual_units] )
+			VAR w = DIVIDE ( SUMX ( t, ABS ( FactForecast[forecast_units] - FactForecast[actual_units] ) ), act )
+			VAR wn = DIVIDE ( SUMX ( t, ABS ( FactForecast[naive_28day_avg] - FactForecast[actual_units] ) ), act )
+			RETURN "Daily units, 7 Sep – 31 Oct · error " & FORMAT ( w, "0%" ) & " vs owner's rule " & FORMAT ( wn, "0%" )
+		displayFolder: 5 Order planner\Detail
+		lineageTag: fa7eac82-3694-4665-82bf-05aa81140b89
+
+	measure 'SKU Test Title' = "TEST PERIOD: FORECAST VS ACTUAL · " & UPPER ( LOOKUPVALUE ( DimProduct[product_name], DimProduct[sku_id], [Selected SKU] ) )
+		displayFolder: 5 Order planner\Detail
+		lineageTag: 9674e235-d3a8-4620-bcc2-287722cb7d35
+
+	measure 'Evaluation Text' = "Trained to 06 Sep 2026; tested on the next 8 weeks (4 real home matches)." & UNICHAR ( 10 ) & "• Match days: WAPE " & FORMAT ( [WAPE Model (match days)], "0.0%" ) & " vs " & FORMAT ( [WAPE Owner (match days)], "0.0%" ) & " for the owner's rule." & UNICHAR ( 10 ) & "• Normal days: " & FORMAT ( [WAPE Model (normal days)], "0.0%" ) & " vs " & FORMAT ( [WAPE Owner (normal days)], "0.0%" ) & ". No gain, as expected: the value is in knowing a match is coming."
+		displayFolder: 6 Method
+		lineageTag: 01bc876c-2027-4e63-9504-65e70b5b4371
+
+	/// Uplift shown only on rows that exist in the order plan for the selected match.
+	measure 'Plan Uplift' = IF ( NOT ISEMPTY ( FactOrderPlan ), [Uplift (typical crowd)] )
+		formatString: 0.0"×"
+		displayFolder: 5 Order planner
+		lineageTag: aa39d33d-6278-4bba-854c-3ab6b49cb770
+
+	/// Actual units on product-days that did not sell out.
+	measure 'Sold (in stock)' = IF ( SUM ( FactForecast[actual_stockout] ) > 0, BLANK (), [Actual Units] )
+		formatString: #,##0
+		displayFolder: 4 Forecast
+		lineageTag: 28f98c8d-0569-4714-9316-cb02a0eb84e9
+
+	/// Actual units on product-days that sold out (shown red).
+	measure 'Sold (sold out)' = IF ( SUM ( FactForecast[actual_stockout] ) > 0, [Actual Units] )
+		formatString: #,##0
+		displayFolder: 4 Forecast
+		lineageTag: 9e628670-1ecb-47b6-b3dc-e41d30aac0ce
+
+	measure 'Hist Sold (in stock)' = IF ( [Hist Sold Colour] = "#C0392B", BLANK (), [Hist Units Sold] )
+		formatString: #,##0
+		displayFolder: 5 Order planner\Detail
+		lineageTag: efd77f84-ae0d-4da8-a409-1cef4274138e
+
+	measure 'Hist Sold (sold out)' = IF ( [Hist Sold Colour] = "#C0392B", [Hist Units Sold] )
+		formatString: #,##0
+		displayFolder: 5 Order planner\Detail
+		lineageTag: c298419c-90dd-4cb6-a64f-b86a67ad4dbe
+
+	column _
+		dataType: string
+		isHidden
+		lineageTag: 3c8d6438-2f70-4124-bc0d-76be6a94e2ea
+		sourceColumn: [_]
+
+	partition _Measures = calculated
+		mode: import
+		source = ROW ( "_", BLANK () )
+

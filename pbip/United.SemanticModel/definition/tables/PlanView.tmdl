@@ -1,0 +1,21 @@
+/// Disconnected table for the order-plan filter buttons.
+table PlanView
+	lineageTag: 1d3baf08-cf87-456f-a116-88ad9c57a056
+
+	column view_order
+		dataType: int64
+		isHidden
+		lineageTag: 7578614c-4b95-4ef2-ba9d-d25f9f684e1b
+		summarizeBy: none
+		sourceColumn: [view_order]
+
+	column view
+		dataType: string
+		lineageTag: cc707b40-062a-49be-995b-74cec6931014
+		sourceColumn: [view]
+		sortByColumn: view_order
+
+	partition PlanView = calculated
+		mode: import
+		source = DATATABLE ( "view", STRING, "view_order", INTEGER, { { "Needs action", 1 }, { "Match-sensitive 1.4×+", 2 }, { "All stocked", 3 } } )
+

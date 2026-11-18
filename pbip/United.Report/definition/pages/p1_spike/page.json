@@ -1,0 +1,35 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.1.0/schema.json",
+  "name": "p1_spike",
+  "displayName": "1 · Match-day spike",
+  "displayOption": "FitToPage",
+  "height": 720,
+  "width": 1280,
+  "visualInteractions": [
+    {
+      "source": "p1_spi_slicer_38",
+      "target": "p1_spi_card_17",
+      "type": "NoFilter"
+    },
+    {
+      "source": "p1_spi_slicer_38",
+      "target": "p1_spi_card_21",
+      "type": "NoFilter"
+    },
+    {
+      "source": "p1_spi_slicer_38",
+      "target": "p1_spi_card_25",
+      "type": "NoFilter"
+    },
+    {
+      "source": "p1_spi_slicer_38",
+      "target": "p1_spi_card_29",
+      "type": "NoFilter"
+    },
+    {
+      "source": "p1_spi_slicer_38",
+      "target": "p1_spi_clustere_39",
+      "type": "NoFilter"
+    }
+  ]
+}

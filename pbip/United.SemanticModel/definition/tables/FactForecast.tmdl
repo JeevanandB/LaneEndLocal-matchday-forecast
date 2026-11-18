@@ -1,0 +1,115 @@
+table FactForecast
+	lineageTag: 992dc701-470b-4968-9ba3-32366e0114e3
+
+	column date
+		dataType: dateTime
+		isHidden
+		formatString: dd/mm/yyyy
+		lineageTag: 5c303bab-95bc-4127-b57b-f8adbe2c9727
+		summarizeBy: none
+		sourceColumn: date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column sku_id
+		dataType: string
+		isHidden
+		lineageTag: 65e72883-e238-4d40-95ed-a2defcbbcc7a
+		summarizeBy: none
+		sourceColumn: sku_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column forecast_origin
+		dataType: dateTime
+		isHidden
+		formatString: dd/mm/yyyy
+		lineageTag: 891ddcb7-9cc4-4246-9de6-eb186479ed86
+		summarizeBy: none
+		sourceColumn: forecast_origin
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column is_match_day
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: bef34566-10c7-4d45-85b6-6b17bd3386af
+		summarizeBy: none
+		sourceColumn: is_match_day
+
+		annotation SummarizationSetBy = Automatic
+
+	column forecast_units
+		dataType: double
+		lineageTag: 65163ad6-7d61-4903-900f-25969e96ed0b
+		summarizeBy: sum
+		sourceColumn: forecast_units
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column baseline_units
+		dataType: double
+		lineageTag: f86e896b-8837-4876-8f31-5ad8c927c875
+		summarizeBy: sum
+		sourceColumn: baseline_units
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column naive_last_week
+		dataType: int64
+		formatString: 0
+		lineageTag: 5edd24cd-0f21-4936-b2d5-54ba09b78917
+		summarizeBy: sum
+		sourceColumn: naive_last_week
+
+		annotation SummarizationSetBy = Automatic
+
+	column naive_28day_avg
+		dataType: double
+		lineageTag: 778073ac-2ca2-4b50-983f-3f43b3ad2c5c
+		summarizeBy: sum
+		sourceColumn: naive_28day_avg
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column actual_units
+		dataType: int64
+		formatString: 0
+		lineageTag: 5f986a32-4e0e-4bd5-a976-cfefc08972be
+		summarizeBy: sum
+		sourceColumn: actual_units
+
+		annotation SummarizationSetBy = Automatic
+
+	column actual_stockout
+		dataType: int64
+		formatString: 0
+		lineageTag: 05b40572-ff26-423b-bfff-a948f6546b26
+		summarizeBy: sum
+		sourceColumn: actual_stockout
+
+		annotation SummarizationSetBy = Automatic
+
+	partition FactForecast = m
+		mode: import
+		source =
+				let
+				  Source = Excel.Workbook(File.Contents(DataFile), null, true),
+				  #"Navigation 1" = Source{[Item = "FactForecast", Kind = "Sheet"]}[Data],
+				  #"Promoted headers" = Table.PromoteHeaders(#"Navigation 1", [PromoteAllScalars = true]),
+				  #"Changed column type" = Table.TransformColumnTypes(#"Promoted headers", {{"date", type date}, {"sku_id", type text}, {"forecast_origin", type date}, {"is_match_day", type logical}, {"forecast_units", type number}, {"baseline_units", type number}, {"naive_last_week", Int64.Type}, {"naive_28day_avg", type number}, {"actual_units", Int64.Type}, {"actual_stockout", Int64.Type}}, "en-US")
+				in
+				  #"Changed column type"
+
+	annotation PBI_ResultType = Table
+

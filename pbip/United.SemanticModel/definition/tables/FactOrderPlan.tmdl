@@ -1,0 +1,180 @@
+table FactOrderPlan
+	lineageTag: 762631a0-a1e8-4e8b-ad88-223f7485200d
+
+	column match_date
+		dataType: dateTime
+		isHidden
+		formatString: dd/mm/yyyy
+		lineageTag: c47cbcd3-b2c6-4d2e-aa36-a971fdb934fa
+		summarizeBy: none
+		sourceColumn: match_date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column sku_id
+		dataType: string
+		isHidden
+		lineageTag: 74280959-598a-4c75-924d-eb541e03408c
+		summarizeBy: none
+		sourceColumn: sku_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column order_for
+		dataType: string
+		lineageTag: 3d5a3416-7049-475e-827f-9aae95434e8b
+		summarizeBy: none
+		sourceColumn: order_for
+
+		annotation SummarizationSetBy = Automatic
+
+	column order_placed
+		dataType: dateTime
+		isHidden
+		formatString: dd/mm/yyyy
+		lineageTag: 5e6daea5-3f4f-421c-96d5-1690bbc7c206
+		summarizeBy: none
+		sourceColumn: order_placed
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column normal_day_units
+		dataType: double
+		lineageTag: bbb3ee48-9cb6-49c2-b451-66e85c73a4ec
+		summarizeBy: sum
+		sourceColumn: normal_day_units
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column match_day_forecast
+		dataType: double
+		lineageTag: f13f923f-4f57-4080-b8dc-b76abb184e40
+		summarizeBy: sum
+		sourceColumn: match_day_forecast
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column cover_days
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: c917fc26-5785-45a7-842d-d74d2a2701c7
+		summarizeBy: sum
+		sourceColumn: cover_days
+
+		annotation SummarizationSetBy = Automatic
+
+	column cover_forecast_units
+		dataType: double
+		lineageTag: 43eeb1e3-6e6a-48a2-9bee-6055cc7aa370
+		summarizeBy: sum
+		sourceColumn: cover_forecast_units
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column stock_on_hand
+		dataType: int64
+		formatString: 0
+		lineageTag: feeaff1a-6ba5-4d2b-97b1-2832c71aea98
+		summarizeBy: sum
+		sourceColumn: stock_on_hand
+
+		annotation SummarizationSetBy = Automatic
+
+	column usual_order
+		dataType: int64
+		formatString: 0
+		lineageTag: 135debec-8b85-445d-ad55-689dbfbb0b46
+		summarizeBy: sum
+		sourceColumn: usual_order
+
+		annotation SummarizationSetBy = Automatic
+
+	column recommended_order
+		dataType: int64
+		formatString: 0
+		lineageTag: 92ef453e-bd67-4b0c-ab48-6372ec08d5b7
+		summarizeBy: sum
+		sourceColumn: recommended_order
+
+		annotation SummarizationSetBy = Automatic
+
+	column difference
+		dataType: int64
+		formatString: 0
+		lineageTag: eb2acbe4-bc07-4bee-8ca1-7cadeb78ee30
+		summarizeBy: sum
+		sourceColumn: difference
+
+		annotation SummarizationSetBy = Automatic
+
+	column status
+		dataType: string
+		lineageTag: 1ecb6fb1-9d32-446b-bae0-85805df601ad
+		summarizeBy: none
+		sourceColumn: status
+
+		annotation SummarizationSetBy = Automatic
+
+	column shelf_price
+		dataType: double
+		lineageTag: 183c92cb-54f2-43ff-8e66-aab58b04d9da
+		summarizeBy: sum
+		sourceColumn: shelf_price
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column value_difference
+		dataType: double
+		isHidden
+		lineageTag: db2686cb-a411-4a2b-a077-ebeec33c4cfc
+		summarizeBy: sum
+		sourceColumn: value_difference
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column actual_match_day_units
+		dataType: int64
+		formatString: 0
+		lineageTag: 5212f43a-8b83-4114-8c79-cbad0ad97736
+		summarizeBy: sum
+		sourceColumn: actual_match_day_units
+
+		annotation SummarizationSetBy = Automatic
+
+	column actual_sold_out
+		dataType: int64
+		formatString: 0
+		lineageTag: dd8c2fe5-f6c5-4b5b-be4f-2177f64446cf
+		summarizeBy: sum
+		sourceColumn: actual_sold_out
+
+		annotation SummarizationSetBy = Automatic
+
+	partition FactOrderPlan = m
+		mode: import
+		source =
+				let
+				  Source = Excel.Workbook(File.Contents(DataFile), null, true),
+				  #"Navigation 1" = Source{[Item = "FactOrderPlan", Kind = "Sheet"]}[Data],
+				  #"Promoted headers" = Table.PromoteHeaders(#"Navigation 1", [PromoteAllScalars = true]),
+				  #"Changed column type" = Table.TransformColumnTypes(#"Promoted headers", {{"match_date", type date}, {"sku_id", type text}, {"order_for", type text}, {"order_placed", type date}, {"normal_day_units", type number}, {"match_day_forecast", type number}, {"cover_days", Int64.Type}, {"cover_forecast_units", type number}, {"stock_on_hand", Int64.Type}, {"usual_order", Int64.Type}, {"recommended_order", Int64.Type}, {"difference", Int64.Type}, {"status", type text}, {"shelf_price", type number}, {"value_difference", type number}, {"actual_match_day_units", Int64.Type}, {"actual_sold_out", Int64.Type}}, "en-US")
+				in
+				  #"Changed column type"
+
+	annotation PBI_ResultType = Table
+

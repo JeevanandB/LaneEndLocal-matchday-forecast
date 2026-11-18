@@ -1,0 +1,75 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.1.0/schema.json",
+  "name": "p3_planner",
+  "displayName": "3 · SKU order planner",
+  "displayOption": "FitToPage",
+  "height": 720,
+  "width": 1280,
+  "visualInteractions": [
+    {
+      "source": "p3_pla_slicer_94",
+      "target": "p3_pla_clustere_112",
+      "type": "NoFilter"
+    },
+    {
+      "source": "p3_pla_slicer_94",
+      "target": "p3_pla_lineChar_113",
+      "type": "NoFilter"
+    },
+    {
+      "source": "p3_pla_tableEx_110",
+      "target": "p3_pla_slicer_94",
+      "type": "NoFilter"
+    },
+    {
+      "source": "p3_pla_tableEx_110",
+      "target": "p3_pla_card_97",
+      "type": "NoFilter"
+    },
+    {
+      "source": "p3_pla_tableEx_110",
+      "target": "p3_pla_card_100",
+      "type": "NoFilter"
+    },
+    {
+      "source": "p3_pla_tableEx_110",
+      "target": "p3_pla_card_104",
+      "type": "NoFilter"
+    },
+    {
+      "source": "p3_pla_tableEx_110",
+      "target": "p3_pla_card_108",
+      "type": "NoFilter"
+    },
+    {
+      "source": "p3_pla_tableEx_110",
+      "target": "p3_pla_slicer_111",
+      "type": "NoFilter"
+    },
+    {
+      "source": "p3_pla_slicer_111",
+      "target": "p3_pla_clustere_112",
+      "type": "NoFilter"
+    },
+    {
+      "source": "p3_pla_slicer_111",
+      "target": "p3_pla_lineChar_113",
+      "type": "NoFilter"
+    },
+    {
+      "source": "p3_pla_slicer_111",
+      "target": "p3_pla_card_100",
+      "type": "NoFilter"
+    },
+    {
+      "source": "p3_pla_slicer_111",
+      "target": "p3_pla_card_104",
+      "type": "NoFilter"
+    },
+    {
+      "source": "p3_pla_slicer_111",
+      "target": "p3_pla_card_108",
+      "type": "NoFilter"
+    }
+  ]
+}

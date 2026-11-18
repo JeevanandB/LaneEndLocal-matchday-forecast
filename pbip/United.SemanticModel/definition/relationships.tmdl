@@ -1,0 +1,38 @@
+relationship AutoDetected_ef29f9f1-172c-4f7d-b34d-bcf3d5d22472
+	fromColumn: FactSales.date
+	toColumn: DimDate.date
+
+relationship AutoDetected_a39f0c14-001a-4760-a5f5-63f3ce76ec8a
+	fromColumn: FactHourly.date
+	toColumn: DimDate.date
+
+relationship AutoDetected_2e9822e9-3b0e-47c9-944d-3b6cd4ea4413
+	fromColumn: FactForecast.date
+	toColumn: DimDate.date
+
+relationship AutoDetected_9ed95ace-8f83-446a-9e54-120efbc48445
+	fromColumn: FactSales.sku_id
+	toColumn: DimProduct.sku_id
+
+relationship AutoDetected_61216ffe-b5d1-475d-ab06-91688f0b229a
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: SkuMatchUplift.sku_id
+	toColumn: DimProduct.sku_id
+
+relationship AutoDetected_102ea2b9-180c-4568-b070-0566737bf69c
+	fromColumn: FactForecast.sku_id
+	toColumn: DimProduct.sku_id
+
+relationship AutoDetected_069c3162-a6b7-4715-a8d1-bd28614e8aca
+	fromColumn: FactOrderPlan.sku_id
+	toColumn: DimProduct.sku_id
+
+relationship FactOrderPlan_match_date_DimDate
+	fromColumn: FactOrderPlan.match_date
+	toColumn: DimDate.date
+
+relationship FactHourly_hour_DimHour
+	fromColumn: FactHourly.hour
+	toColumn: DimHour.hour
+

@@ -1,0 +1,102 @@
+table SkuMatchUplift
+	lineageTag: 1d82457f-fad0-40df-be43-f91c58193c89
+
+	column sku_id
+		dataType: string
+		isHidden
+		lineageTag: 8765065d-ad05-4b14-8caf-18714cd238c8
+		summarizeBy: none
+		sourceColumn: sku_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column match_beta_per_30k
+		dataType: double
+		lineageTag: 62778fbd-5ee0-48e8-9e80-82e695e38d2f
+		summarizeBy: sum
+		sourceColumn: match_beta_per_30k
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column uplift_at_27500
+		dataType: double
+		lineageTag: 70893fa4-9f17-45c5-9d67-ead899210e1d
+		summarizeBy: sum
+		sourceColumn: uplift_at_27500
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column match_days_used
+		dataType: int64
+		formatString: 0
+		lineageTag: 947b87d1-3cee-4d61-bc15-b774c5df14e8
+		summarizeBy: sum
+		sourceColumn: match_days_used
+
+		annotation SummarizationSetBy = Automatic
+
+	column match_sellout_rate
+		dataType: double
+		lineageTag: 485cc51e-6c75-44e4-9e81-7f0fe3d22728
+		summarizeBy: sum
+		sourceColumn: match_sellout_rate
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column demand_censored
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 8afffb36-f038-4950-ba21-253d3b97527e
+		summarizeBy: none
+		sourceColumn: demand_censored
+
+		annotation SummarizationSetBy = Automatic
+
+	column method
+		dataType: string
+		lineageTag: e0d75ca4-ba64-4344-87bf-75540f7b14b2
+		summarizeBy: none
+		sourceColumn: method
+
+		annotation SummarizationSetBy = Automatic
+
+	column product_name
+		dataType: string
+		lineageTag: 2d6c4a9c-859f-4728-9fda-f7840fe22e48
+		summarizeBy: none
+		sourceColumn: product_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column category
+		dataType: string
+		lineageTag: f869be6f-22a7-4787-a741-98464b3b7c0c
+		summarizeBy: none
+		sourceColumn: category
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Top 12 by uplift plus Milk 2pt and White Bread (as in the HTML).
+	column show_on_uplift_chart = VAR r = RANKX ( SkuMatchUplift, SkuMatchUplift[uplift_at_27500], , DESC, Skip ) RETURN r <= 12 || SkuMatchUplift[sku_id] IN { "SKU133", "SKU129" }
+		dataType: boolean
+		lineageTag: 55a61da0-499e-4aec-a832-b372bd4a56fe
+
+	partition SkuMatchUplift = m
+		mode: import
+		source =
+				let
+				  Source = Excel.Workbook(File.Contents(DataFile), null, true),
+				  #"Navigation 1" = Source{[Item = "SkuMatchUplift", Kind = "Sheet"]}[Data],
+				  #"Promoted headers" = Table.PromoteHeaders(#"Navigation 1", [PromoteAllScalars = true]),
+				  #"Changed column type" = Table.TransformColumnTypes(#"Promoted headers", {{"sku_id", type text}, {"match_beta_per_30k", type number}, {"uplift_at_27500", type number}, {"match_days_used", Int64.Type}, {"match_sellout_rate", type number}, {"demand_censored", type logical}, {"method", type text}, {"product_name", type text}, {"category", type text}}, "en-US")
+				in
+				  #"Changed column type"
+
+	annotation PBI_ResultType = Table
+

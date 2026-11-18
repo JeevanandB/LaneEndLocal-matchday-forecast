@@ -1,0 +1,14 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.1.0/schema.json",
+  "name": "tt_hourly",
+  "displayName": "Hourly tooltip",
+  "displayOption": "FitToPage",
+  "height": 180,
+  "width": 320,
+  "type": "Tooltip",
+  "visibility": "HiddenInViewMode",
+  "pageBinding": {
+    "name": "tt_hourly_binding",
+    "type": "Tooltip"
+  }
+}
