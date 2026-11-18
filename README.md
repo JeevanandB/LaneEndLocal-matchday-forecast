@@ -3,7 +3,7 @@
 **Match-day demand forecasting for Lane End Local, a (fictional) convenience store next to Bramall Lane, Sheffield.**
 Power BI report + interactive HTML version · portfolio project by Jeevanand Balasubrahmanya · [GitHub](https://github.com/JeevanandB) · [LinkedIn](https://www.linkedin.com/in/jeevanand-balasubrahmanya/)
 
-👉 **Interactive HTML version:** [`docs/index.html`](docs/index.html) (served with GitHub Pages from the `docs/` folder)
+👉 **Live interactive dashboard:** https://jeevanandb.github.io/LaneEndLocal-matchday-forecast/ (source: [`docs/index.html`](docs/index.html), served with GitHub Pages)
 
 > **Data honesty:** the store data (sales, stock, prices, promotions, weather) is **simulated**. The Sheffield United home fixtures, kick-off times and crowds are **real** public data from FBref, Wikipedia, footballwebpages.co.uk and vavel.com. Every report page says so. This is an independent portfolio project, not affiliated with Sheffield United FC or any retailer.
 
