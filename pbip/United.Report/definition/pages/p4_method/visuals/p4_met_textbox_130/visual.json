@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
   "name": "p4_met_textbox_130",
   "position": {
-    "x": 16,
-    "y": 140,
-    "z": 1700,
-    "height": 275,
-    "width": 305,
-    "tabOrder": 1700
+    "x": 10,
+    "y": 38,
+    "z": 500,
+    "height": 22,
+    "width": 250,
+    "tabOrder": 500
   },
   "visual": {
     "visualType": "textbox",
@@ -19,38 +19,11 @@
               {
                 "textRuns": [
                   {
-                    "value": "THE BUSINESS QUESTION",
+                    "value": "Portfolio project by Jeevanand Balasubrahmanya",
                     "textStyle": {
                       "fontFamily": "Arial",
-                      "fontSize": "11pt",
-                      "color": "#4C0743",
-                      "fontWeight": "bold"
-                    }
-                  }
-                ]
-              },
-              {
-                "textRuns": [
-                  {
-                    "value": "The owner orders from \"what sold over the last four weeks\". That rule ignores fixtures, so cans, pasties and sausage rolls run out before kick-off, while slow lines are over-stocked.",
-                    "textStyle": {
-                      "fontFamily": "Arial",
-                      "fontSize": "9pt",
-                      "color": "#5B4A58",
-                      "fontWeight": "normal"
-                    }
-                  }
-                ]
-              },
-              {
-                "textRuns": [
-                  {
-                    "value": "How much of each product should be ordered for the delivery before a home match?",
-                    "textStyle": {
-                      "fontFamily": "Arial",
-                      "fontSize": "9pt",
-                      "color": "#2A0F27",
-                      "fontWeight": "bold"
+                      "fontSize": "8pt",
+                      "color": "#E9D9E6"
                     }
                   }
                 ]
@@ -93,25 +66,7 @@
             "show": {
               "expr": {
                 "Literal": {
-                  "Value": "true"
-                }
-              }
-            },
-            "color": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "Literal": {
-                      "Value": "'#FFFFFF'"
-                    }
-                  }
-                }
-              }
-            },
-            "transparency": {
-              "expr": {
-                "Literal": {
-                  "Value": "0D"
+                  "Value": "false"
                 }
               }
             }
@@ -124,25 +79,7 @@
             "show": {
               "expr": {
                 "Literal": {
-                  "Value": "true"
-                }
-              }
-            },
-            "color": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "Literal": {
-                      "Value": "'#E6DDE4'"
-                    }
-                  }
-                }
-              }
-            },
-            "radius": {
-              "expr": {
-                "Literal": {
-                  "Value": "4D"
+                  "Value": "false"
                 }
               }
             }

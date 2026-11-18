@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
   "name": "p1_spi_textbox_32",
   "position": {
-    "x": 19,
-    "y": 168,
+    "x": 953,
+    "y": 134,
     "z": 3200,
-    "height": 46,
-    "width": 406,
+    "height": 25,
+    "width": 295,
     "tabOrder": 3200
   },
   "visual": {
@@ -19,23 +19,15 @@
               {
                 "textRuns": [
                   {
-                    "value": "The rush is before kick-off:",
+                    "value": "Jan 2023 – Oct 2026 · league, cups, play-off",
                     "textStyle": {
                       "fontFamily": "Arial",
                       "fontSize": "9pt",
-                      "color": "#2A0F27",
-                      "fontWeight": "bold"
-                    }
-                  },
-                  {
-                    "value": " takings peak 2–3 hours ahead, then drop back to normal during the game.",
-                    "textStyle": {
-                      "fontFamily": "Arial",
-                      "fontSize": "9pt",
-                      "color": "#5B4A58"
+                      "color": "#6E1A63"
                     }
                   }
-                ]
+                ],
+                "horizontalTextAlignment": "center"
               }
             ]
           }
@@ -75,25 +67,7 @@
             "show": {
               "expr": {
                 "Literal": {
-                  "Value": "true"
-                }
-              }
-            },
-            "color": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "Literal": {
-                      "Value": "'#FFFFFF'"
-                    }
-                  }
-                }
-              }
-            },
-            "transparency": {
-              "expr": {
-                "Literal": {
-                  "Value": "0D"
+                  "Value": "false"
                 }
               }
             }

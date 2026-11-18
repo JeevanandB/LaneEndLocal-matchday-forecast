@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
   "name": "p4_met_textbox_144",
   "position": {
-    "x": 960,
-    "y": 425,
-    "z": 3100,
-    "height": 275,
-    "width": 305,
-    "tabOrder": 3100
+    "x": 28,
+    "y": 80,
+    "z": 1900,
+    "height": 46,
+    "width": 1228,
+    "tabOrder": 1900
   },
   "visual": {
     "visualType": "textbox",
@@ -19,113 +19,79 @@
               {
                 "textRuns": [
                   {
-                    "value": "NEXT STEPS & TOOLS",
+                    "value": "A convenience store beside ",
+                    "textStyle": {
+                      "fontFamily": "Arial",
+                      "fontSize": "11pt",
+                      "color": "#2A0F27"
+                    }
+                  },
+                  {
+                    "value": "Bramall Lane",
                     "textStyle": {
                       "fontFamily": "Arial",
                       "fontSize": "11pt",
                       "color": "#4C0743",
                       "fontWeight": "bold"
                     }
-                  }
-                ]
-              },
-              {
-                "textRuns": [
+                  },
                   {
-                    "value": "• ",
+                    "value": " sees demand jump before every ",
                     "textStyle": {
                       "fontFamily": "Arial",
-                      "fontSize": "9pt",
-                      "color": "#5B4A58",
-                      "fontWeight": "normal"
+                      "fontSize": "11pt",
+                      "color": "#2A0F27"
                     }
                   },
                   {
-                    "value": "Gradient-boosted model with kick-off band and temperature.",
+                    "value": "Sheffield United",
                     "textStyle": {
                       "fontFamily": "Arial",
-                      "fontSize": "9pt",
-                      "color": "#5B4A58",
-                      "fontWeight": "normal"
-                    }
-                  }
-                ]
-              },
-              {
-                "textRuns": [
-                  {
-                    "value": "• ",
-                    "textStyle": {
-                      "fontFamily": "Arial",
-                      "fontSize": "9pt",
-                      "color": "#5B4A58",
-                      "fontWeight": "normal"
-                    }
-                  },
-                  {
-                    "value": "Censored-demand model (e.g. Tobit) for hidden demand.",
-                    "textStyle": {
-                      "fontFamily": "Arial",
-                      "fontSize": "9pt",
-                      "color": "#5B4A58",
-                      "fontWeight": "normal"
-                    }
-                  }
-                ]
-              },
-              {
-                "textRuns": [
-                  {
-                    "value": "• ",
-                    "textStyle": {
-                      "fontFamily": "Arial",
-                      "fontSize": "9pt",
-                      "color": "#5B4A58",
-                      "fontWeight": "normal"
-                    }
-                  },
-                  {
-                    "value": "Newsvendor rule for fresh lines using margin and waste.",
-                    "textStyle": {
-                      "fontFamily": "Arial",
-                      "fontSize": "9pt",
-                      "color": "#5B4A58",
-                      "fontWeight": "normal"
-                    }
-                  }
-                ]
-              },
-              {
-                "textRuns": [
-                  {
-                    "value": "Tools: ",
-                    "textStyle": {
-                      "fontFamily": "Arial",
-                      "fontSize": "9pt",
-                      "color": "#2A0F27",
+                      "fontSize": "11pt",
+                      "color": "#4C0743",
                       "fontWeight": "bold"
                     }
                   },
                   {
-                    "value": "Python (pandas, NumPy), Power BI, Chart.js, GitHub.",
+                    "value": " home match, and runs out of its best match-day lines. This project measures the spike, ",
                     "textStyle": {
                       "fontFamily": "Arial",
-                      "fontSize": "9pt",
-                      "color": "#5B4A58",
-                      "fontWeight": "normal"
+                      "fontSize": "11pt",
+                      "color": "#2A0F27"
                     }
-                  }
-                ]
-              },
-              {
-                "textRuns": [
+                  },
                   {
-                    "value": "Independent portfolio project, not affiliated with Sheffield United FC or any retailer.",
+                    "value": "forecasts demand 3 days ahead",
                     "textStyle": {
                       "fontFamily": "Arial",
-                      "fontSize": "8pt",
-                      "color": "#8A7F88",
-                      "fontStyle": "italic"
+                      "fontSize": "11pt",
+                      "color": "#4C0743",
+                      "fontWeight": "bold"
+                    }
+                  },
+                  {
+                    "value": ", and turns the forecast into a ",
+                    "textStyle": {
+                      "fontFamily": "Arial",
+                      "fontSize": "11pt",
+                      "color": "#2A0F27"
+                    }
+                  },
+                  {
+                    "value": "product-by-product order plan",
+                    "textStyle": {
+                      "fontFamily": "Arial",
+                      "fontSize": "11pt",
+                      "color": "#4C0743",
+                      "fontWeight": "bold"
+                    }
+                  },
+                  {
+                    "value": ".",
+                    "textStyle": {
+                      "fontFamily": "Arial",
+                      "fontSize": "11pt",
+                      "color": "#2A0F27"
                     }
                   }
                 ]
@@ -168,25 +134,7 @@
             "show": {
               "expr": {
                 "Literal": {
-                  "Value": "true"
-                }
-              }
-            },
-            "color": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "Literal": {
-                      "Value": "'#FFFFFF'"
-                    }
-                  }
-                }
-              }
-            },
-            "transparency": {
-              "expr": {
-                "Literal": {
-                  "Value": "0D"
+                  "Value": "false"
                 }
               }
             }
@@ -199,25 +147,7 @@
             "show": {
               "expr": {
                 "Literal": {
-                  "Value": "true"
-                }
-              }
-            },
-            "color": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "Literal": {
-                      "Value": "'#E6DDE4'"
-                    }
-                  }
-                }
-              }
-            },
-            "radius": {
-              "expr": {
-                "Literal": {
-                  "Value": "4D"
+                  "Value": "false"
                 }
               }
             }

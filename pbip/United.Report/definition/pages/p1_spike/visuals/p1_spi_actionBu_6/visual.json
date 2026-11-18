@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
   "name": "p1_spi_actionBu_6",
   "position": {
-    "x": 662,
-    "y": 6,
+    "x": 248,
+    "y": 40,
     "z": 600,
-    "height": 24,
-    "width": 148,
+    "height": 18,
+    "width": 60,
     "tabOrder": 600
   },
   "visual": {
@@ -45,7 +45,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'1 · MATCH-DAY SPIKE'"
+                  "Value": "'GitHub'"
                 }
               }
             },
@@ -54,7 +54,7 @@
                 "color": {
                   "expr": {
                     "Literal": {
-                      "Value": "'#4C0743'"
+                      "Value": "'#FFFFFF'"
                     }
                   }
                 }
@@ -87,6 +87,34 @@
                   "Value": "'center'"
                 }
               }
+            },
+            "leftMargin": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            },
+            "rightMargin": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            },
+            "topMargin": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            },
+            "bottomMargin": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
             }
           },
           "selector": {
@@ -113,7 +141,7 @@
                 "color": {
                   "expr": {
                     "Literal": {
-                      "Value": "'#E9D9E6'"
+                      "Value": "'#6E1A63'"
                     }
                   }
                 }
@@ -158,7 +186,7 @@
             "roundEdge": {
               "expr": {
                 "Literal": {
-                  "Value": "6D"
+                  "Value": "8D"
                 }
               }
             }
@@ -258,14 +286,14 @@
             "type": {
               "expr": {
                 "Literal": {
-                  "Value": "'PageNavigation'"
+                  "Value": "'WebUrl'"
                 }
               }
             },
-            "navigationSection": {
+            "webUrl": {
               "expr": {
                 "Literal": {
-                  "Value": "'p1_spike'"
+                  "Value": "'https://github.com/JeevanandB'"
                 }
               }
             }

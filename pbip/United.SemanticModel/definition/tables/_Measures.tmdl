@@ -79,7 +79,7 @@ table _Measures
 	measure 'Hourly Rev Normal' =
 			VAR wd = CALCULATETABLE ( VALUES ( DimDate[day_of_week] ), DimDate[is_match_day] = TRUE (), DimDate[period] = "Train" )
 			RETURN
-			    CALCULATE ( [Avg Hourly Revenue], REMOVEFILTERS ( DimDate[kickoff_band] ), DimDate[is_match_day] = FALSE (), DimDate[store_open] = TRUE (), DimDate[period] = "Train", TREATAS ( wd, DimDate[day_of_week] ) )
+			    CALCULATE ( [Avg Hourly Revenue], REMOVEFILTERS ( DimDate[kickoff_band] ), REMOVEFILTERS ( DimDate[band_chip] ), DimDate[is_match_day] = FALSE (), DimDate[store_open] = TRUE (), DimDate[period] = "Train", TREATAS ( wd, DimDate[day_of_week] ) )
 		formatString: £#,##0
 		displayFolder: 2 Match-day spike
 		lineageTag: 6f1f1a70-545b-48bd-bd7b-b36ce609c8d0
@@ -118,9 +118,8 @@ table _Measures
 		lineageTag: 95ebb5e3-b461-4dcf-b0bd-108c97fb66ff
 
 	measure 'Band Caption' =
-			VAR b = SELECTEDVALUE ( DimDate[kickoff_band], "All kick-offs" )
 			VAR n = CALCULATE ( COUNTROWS ( DimDate ), DimDate[is_match_day] = TRUE (), DimDate[period] = "Train" )
-			RETURN b & " · average of " & n & " home matches vs the same weekday with no match"
+			RETURN "Average of " & n & " home matches vs the same weekday, no match"
 		displayFolder: 2 Match-day spike
 		lineageTag: aaa35a1b-f631-4c83-8f60-0ee44ac9b651
 
@@ -423,7 +422,7 @@ table _Measures
 		displayFolder: 5 Order planner
 		lineageTag: 2abe5df4-625c-4821-b2a1-ae95bca4dd37
 
-	measure 'Status Colour' = SWITCH ( SELECTEDVALUE ( FactOrderPlan[status] ), "Demand hidden - trial +50%", "#C0392B", "Sells out - order more", "#C0392B", "Order more", "#6E1A63", "Over-ordered", "#8E3A83", "#B3A9B1" )
+	measure 'Status Colour' = SWITCH ( SELECTEDVALUE ( FactOrderPlan[status] ), "Demand hidden - trial +50%", "#C0392B", "Sells out - order more", "#C0392B", "Order more", "#6E1A63", "Over-ordered", "#8E3A83", "#EFE8EE" )
 		displayFolder: 5 Order planner
 		lineageTag: c40611bd-ddfd-478c-83ce-78755a1dfad1
 
@@ -438,7 +437,7 @@ table _Measures
 		displayFolder: 5 Order planner
 		lineageTag: e537a6bd-0b20-43b3-b324-ce43a801268a
 
-	measure 'Sold Text' = IF ( HASONEVALUE ( FactOrderPlan[sku_id] ), FORMAT ( SUM ( FactOrderPlan[actual_match_day_units] ), "#,##0" ) & IF ( MAX ( FactOrderPlan[actual_sold_out] ) = 1, " · sold out" ) )
+	measure 'Sold Text' = IF ( HASONEVALUE ( FactOrderPlan[sku_id] ), FORMAT ( SUM ( FactOrderPlan[actual_match_day_units] ), "#,##0" ) & IF ( MAX ( FactOrderPlan[actual_sold_out] ) = 1, " · out" ) )
 		displayFolder: 5 Order planner
 		lineageTag: ab7dfee4-3d78-42ba-8ced-a5811f12840b
 
@@ -459,7 +458,10 @@ table _Measures
 		displayFolder: 5 Order planner
 		lineageTag: 30d15de5-4ce8-4dd3-abb8-339018513c86
 
-	measure 'Product Detail' = IF ( HASONEVALUE ( FactOrderPlan[sku_id] ), VALUES ( FactOrderPlan[sku_id] ) & " · " & SUBSTITUTE ( MAX ( FactOrderPlan[order_for] ), " delivery", "" ) )
+	measure 'Product Detail' =
+			VAR o = SUBSTITUTE ( MAX ( FactOrderPlan[order_for] ), " delivery", "" )
+			VAR p2 = SEARCH ( " ", o, SEARCH ( " ", o, 1, 0 ) + 1, 0 )
+			RETURN IF ( HASONEVALUE ( FactOrderPlan[sku_id] ), VALUES ( FactOrderPlan[sku_id] ) & " · " & IF ( p2 > 0, LEFT ( o, p2 - 1 ), o ) )
 		displayFolder: 5 Order planner
 		lineageTag: 5827dac7-cb61-4cde-b2a5-92d5e70521ab
 
@@ -563,6 +565,10 @@ table _Measures
 		formatString: #,##0
 		displayFolder: 5 Order planner\Detail
 		lineageTag: c298419c-90dd-4cb6-a64f-b86a67ad4dbe
+
+	measure 'Status Font Colour' = IF ( SELECTEDVALUE ( FactOrderPlan[status] ) = "OK", "#5B4A58", "#FFFFFF" )
+		displayFolder: 5 Order planner
+		lineageTag: 7ee93518-4214-4eef-97f5-ef70dfe40cc7
 
 	column _
 		dataType: string

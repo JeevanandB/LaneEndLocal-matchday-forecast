@@ -6,7 +6,7 @@
     "y": 38,
     "z": 500,
     "height": 22,
-    "width": 640,
+    "width": 250,
     "tabOrder": 500
   },
   "visual": {
@@ -19,40 +19,12 @@
               {
                 "textRuns": [
                   {
-                    "value": "Portfolio project by Jeevanand Balasubrahmanya · ",
+                    "value": "Portfolio project by Jeevanand Balasubrahmanya",
                     "textStyle": {
                       "fontFamily": "Arial",
                       "fontSize": "8pt",
                       "color": "#E9D9E6"
                     }
-                  },
-                  {
-                    "value": "GitHub",
-                    "textStyle": {
-                      "fontFamily": "Arial",
-                      "fontSize": "8pt",
-                      "color": "#FFFFFF",
-                      "textDecoration": "underline"
-                    },
-                    "url": "https://github.com/JeevanandB"
-                  },
-                  {
-                    "value": " · ",
-                    "textStyle": {
-                      "fontFamily": "Arial",
-                      "fontSize": "8pt",
-                      "color": "#E9D9E6"
-                    }
-                  },
-                  {
-                    "value": "LinkedIn",
-                    "textStyle": {
-                      "fontFamily": "Arial",
-                      "fontSize": "8pt",
-                      "color": "#FFFFFF",
-                      "textDecoration": "underline"
-                    },
-                    "url": "https://www.linkedin.com/in/jeevanand-balasubrahmanya/"
                   }
                 ]
               }

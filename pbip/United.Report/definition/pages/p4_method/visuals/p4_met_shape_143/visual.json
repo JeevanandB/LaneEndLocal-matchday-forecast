@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
   "name": "p4_met_shape_143",
   "position": {
-    "x": 645,
-    "y": 425,
-    "z": 3000,
-    "height": 3,
-    "width": 305,
-    "tabOrder": 3000
+    "x": 16,
+    "y": 74,
+    "z": 1800,
+    "height": 56,
+    "width": 3,
+    "tabOrder": 1800
   },
   "visual": {
     "visualType": "shape",

@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
   "name": "p1_spi_shape_33",
   "position": {
-    "x": 435,
+    "x": 16,
     "y": 168,
     "z": 3300,
     "height": 46,
-    "width": 3,
+    "width": 409,
     "tabOrder": 3300
   },
   "visual": {
@@ -44,7 +44,7 @@
                 "color": {
                   "expr": {
                     "Literal": {
-                      "Value": "'#A0559A'"
+                      "Value": "'#FFFFFF'"
                     }
                   }
                 }
@@ -69,7 +69,25 @@
             "show": {
               "expr": {
                 "Literal": {
-                  "Value": "false"
+                  "Value": "true"
+                }
+              }
+            },
+            "lineColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#E6DDE4'"
+                    }
+                  }
+                }
+              }
+            },
+            "weight": {
+              "expr": {
+                "Literal": {
+                  "Value": "1D"
                 }
               }
             }

@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
   "name": "p3_pla_textbox_93",
   "position": {
-    "x": 940,
-    "y": 700,
-    "z": 1400,
-    "height": 20,
-    "width": 332,
-    "tabOrder": 1400
+    "x": 10,
+    "y": 16,
+    "z": 400,
+    "height": 28,
+    "width": 645,
+    "tabOrder": 400
   },
   "visual": {
     "visualType": "textbox",
@@ -19,15 +19,15 @@
               {
                 "textRuns": [
                   {
-                    "value": "Model trained to 06 Sep 2026 · test 07 Sep – 31 Oct 2026",
+                    "value": "When the Blades play at home, what should the corner shop order?",
                     "textStyle": {
                       "fontFamily": "Arial",
-                      "fontSize": "8pt",
-                      "color": "#6E1A63"
+                      "fontSize": "15pt",
+                      "color": "#FFFFFF",
+                      "fontWeight": "bold"
                     }
                   }
-                ],
-                "horizontalTextAlignment": "right"
+                ]
               }
             ]
           }

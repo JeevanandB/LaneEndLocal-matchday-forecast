@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
   "name": "p2_for_shape_59",
   "position": {
-    "x": 327,
-    "y": 74,
-    "z": 1900,
-    "height": 86,
-    "width": 303,
-    "tabOrder": 1900
+    "x": 0,
+    "y": 702,
+    "z": 1400,
+    "height": 18,
+    "width": 1280,
+    "tabOrder": 1400
   },
   "visual": {
     "visualType": "shape",
@@ -44,7 +44,7 @@
                 "color": {
                   "expr": {
                     "Literal": {
-                      "Value": "'#FFFFFF'"
+                      "Value": "'#E9D9E6'"
                     }
                   }
                 }
@@ -69,25 +69,7 @@
             "show": {
               "expr": {
                 "Literal": {
-                  "Value": "true"
-                }
-              }
-            },
-            "lineColor": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "Literal": {
-                      "Value": "'#E6DDE4'"
-                    }
-                  }
-                }
-              }
-            },
-            "weight": {
-              "expr": {
-                "Literal": {
-                  "Value": "1D"
+                  "Value": "false"
                 }
               }
             }

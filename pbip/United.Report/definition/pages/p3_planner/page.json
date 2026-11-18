@@ -7,68 +7,78 @@
   "width": 1280,
   "visualInteractions": [
     {
-      "source": "p3_pla_slicer_94",
-      "target": "p3_pla_clustere_112",
+      "source": "p3_pla_slicer_107",
+      "target": "p3_pla_clustere_124",
       "type": "NoFilter"
     },
     {
-      "source": "p3_pla_slicer_94",
-      "target": "p3_pla_lineChar_113",
+      "source": "p3_pla_slicer_107",
+      "target": "p3_pla_lineChar_125",
       "type": "NoFilter"
     },
     {
-      "source": "p3_pla_tableEx_110",
-      "target": "p3_pla_slicer_94",
+      "source": "p3_pla_tableEx_122",
+      "target": "p3_pla_slicer_107",
       "type": "NoFilter"
     },
     {
-      "source": "p3_pla_tableEx_110",
-      "target": "p3_pla_card_97",
+      "source": "p3_pla_tableEx_122",
+      "target": "p3_pla_card_109",
       "type": "NoFilter"
     },
     {
-      "source": "p3_pla_tableEx_110",
-      "target": "p3_pla_card_100",
+      "source": "p3_pla_tableEx_122",
+      "target": "p3_pla_card_112",
       "type": "NoFilter"
     },
     {
-      "source": "p3_pla_tableEx_110",
-      "target": "p3_pla_card_104",
+      "source": "p3_pla_tableEx_122",
+      "target": "p3_pla_card_116",
       "type": "NoFilter"
     },
     {
-      "source": "p3_pla_tableEx_110",
-      "target": "p3_pla_card_108",
+      "source": "p3_pla_tableEx_122",
+      "target": "p3_pla_card_120",
       "type": "NoFilter"
     },
     {
-      "source": "p3_pla_tableEx_110",
-      "target": "p3_pla_slicer_111",
+      "source": "p3_pla_tableEx_122",
+      "target": "p3_pla_slicer_123",
       "type": "NoFilter"
     },
     {
-      "source": "p3_pla_slicer_111",
-      "target": "p3_pla_clustere_112",
+      "source": "p3_pla_tableEx_122",
+      "target": "p3_pla_clustere_124",
+      "type": "DataFilter"
+    },
+    {
+      "source": "p3_pla_tableEx_122",
+      "target": "p3_pla_lineChar_125",
+      "type": "DataFilter"
+    },
+    {
+      "source": "p3_pla_slicer_123",
+      "target": "p3_pla_clustere_124",
       "type": "NoFilter"
     },
     {
-      "source": "p3_pla_slicer_111",
-      "target": "p3_pla_lineChar_113",
+      "source": "p3_pla_slicer_123",
+      "target": "p3_pla_lineChar_125",
       "type": "NoFilter"
     },
     {
-      "source": "p3_pla_slicer_111",
-      "target": "p3_pla_card_100",
+      "source": "p3_pla_slicer_123",
+      "target": "p3_pla_card_112",
       "type": "NoFilter"
     },
     {
-      "source": "p3_pla_slicer_111",
-      "target": "p3_pla_card_104",
+      "source": "p3_pla_slicer_123",
+      "target": "p3_pla_card_116",
       "type": "NoFilter"
     },
     {
-      "source": "p3_pla_slicer_111",
-      "target": "p3_pla_card_108",
+      "source": "p3_pla_slicer_123",
+      "target": "p3_pla_card_120",
       "type": "NoFilter"
     }
   ]

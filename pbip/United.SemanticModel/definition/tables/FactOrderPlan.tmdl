@@ -44,6 +44,7 @@ table FactOrderPlan
 
 	column normal_day_units
 		dataType: double
+		formatString: #,##0
 		lineageTag: bbb3ee48-9cb6-49c2-b451-66e85c73a4ec
 		summarizeBy: sum
 		sourceColumn: normal_day_units
@@ -54,6 +55,7 @@ table FactOrderPlan
 
 	column match_day_forecast
 		dataType: double
+		formatString: #,##0
 		lineageTag: f13f923f-4f57-4080-b8dc-b76abb184e40
 		summarizeBy: sum
 		sourceColumn: match_day_forecast

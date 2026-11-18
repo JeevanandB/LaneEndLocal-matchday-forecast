@@ -221,7 +221,19 @@ cultureInfo en-US
 			          "ConceptualProperty": "Normal Day Units"
 			        }
 			      },
-			      "State": "Generated"
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Normal day": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
 			    },
 			    "table_measures.forecast_units": {
 			      "Definition": {
@@ -251,7 +263,19 @@ cultureInfo en-US
 			          "ConceptualProperty": "Stock On Shelf"
 			        }
 			      },
-			      "State": "Generated"
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Stock on shelf": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
 			    },
 			    "table_measures.actual_units": {
 			      "Definition": {
@@ -343,7 +367,19 @@ cultureInfo en-US
 			          "ConceptualProperty": "Hist Stock At Opening"
 			        }
 			      },
-			      "State": "Generated"
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Stock at opening": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
 			    },
 			    "table_measures.hist_units_sold": {
 			      "Definition": {
@@ -550,10 +586,28 @@ cultureInfo en-US
 			          "ConceptualProperty": "Key Series Value"
 			        }
 			      },
+			      "State": "Generated"
+			    },
+			    "table_measures.hist_series_value": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "_Measures",
+			          "ConceptualProperty": "Hist Series Value"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "table_measures.sold_in_stock": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "_Measures",
+			          "ConceptualProperty": "Sold (in stock)"
+			        }
+			      },
 			      "State": "Generated",
 			      "Terms": [
 			        {
-			          "Units": {
+			          "Sold": {
 			            "State": "Suggested",
 			            "Source": {
 			              "Type": "External",
@@ -564,17 +618,59 @@ cultureInfo en-US
 			        }
 			      ]
 			    },
-			    "table_measures.hist_series_value": {
+			    "table_measures.sold_sold_out": {
 			      "Definition": {
 			        "Binding": {
 			          "ConceptualEntity": "_Measures",
-			          "ConceptualProperty": "Hist Series Value"
+			          "ConceptualProperty": "Sold (sold out)"
 			        }
 			      },
 			      "State": "Generated",
 			      "Terms": [
 			        {
-			          "Units": {
+			          "Sold out": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "table_measures.hist_sold_in_stock": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "_Measures",
+			          "ConceptualProperty": "Hist Sold (in stock)"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Sold": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "table_measures.hist_sold_sold_out": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "_Measures",
+			          "ConceptualProperty": "Hist Sold (sold out)"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Sold out": {
 			            "State": "Suggested",
 			            "Source": {
 			              "Type": "External",

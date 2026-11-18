@@ -3,11 +3,11 @@
   "name": "p3_pla_shape_91",
   "position": {
     "x": 0,
-    "y": 702,
-    "z": 1200,
-    "height": 18,
+    "y": 59,
+    "z": 200,
+    "height": 3,
     "width": 1280,
-    "tabOrder": 1200
+    "tabOrder": 200
   },
   "visual": {
     "visualType": "shape",
@@ -44,7 +44,7 @@
                 "color": {
                   "expr": {
                     "Literal": {
-                      "Value": "'#E9D9E6'"
+                      "Value": "'#C99AC2'"
                     }
                   }
                 }

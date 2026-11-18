@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
   "name": "p2_for_textbox_50",
   "position": {
-    "x": 866,
-    "y": 34,
-    "z": 1000,
+    "x": 10,
+    "y": 38,
+    "z": 500,
     "height": 22,
-    "width": 238,
-    "tabOrder": 1000
+    "width": 250,
+    "tabOrder": 500
   },
   "visual": {
     "visualType": "textbox",
@@ -19,23 +19,14 @@
               {
                 "textRuns": [
                   {
-                    "value": "● ",
+                    "value": "Portfolio project by Jeevanand Balasubrahmanya",
                     "textStyle": {
                       "fontFamily": "Arial",
                       "fontSize": "8pt",
-                      "color": "#C99AC2"
-                    }
-                  },
-                  {
-                    "value": "Fixtures: real Sheffield United home matches",
-                    "textStyle": {
-                      "fontFamily": "Arial",
-                      "fontSize": "8pt",
-                      "color": "#FFFFFF"
+                      "color": "#E9D9E6"
                     }
                   }
-                ],
-                "horizontalTextAlignment": "center"
+                ]
               }
             ]
           }
@@ -75,25 +66,7 @@
             "show": {
               "expr": {
                 "Literal": {
-                  "Value": "true"
-                }
-              }
-            },
-            "color": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "Literal": {
-                      "Value": "'#6E1A63'"
-                    }
-                  }
-                }
-              }
-            },
-            "transparency": {
-              "expr": {
-                "Literal": {
-                  "Value": "0D"
+                  "Value": "false"
                 }
               }
             }

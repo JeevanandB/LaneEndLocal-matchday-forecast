@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
   "name": "p4_met_textbox_138",
   "position": {
-    "x": 16,
-    "y": 425,
-    "z": 2500,
-    "height": 275,
-    "width": 305,
-    "tabOrder": 2500
+    "x": 1108,
+    "y": 34,
+    "z": 1300,
+    "height": 22,
+    "width": 158,
+    "tabOrder": 1300
   },
   "visual": {
     "visualType": "textbox",
@@ -19,70 +19,23 @@
               {
                 "textRuns": [
                   {
-                    "value": "FROM FORECAST TO ORDER",
+                    "value": "● ",
                     "textStyle": {
                       "fontFamily": "Arial",
-                      "fontSize": "11pt",
-                      "color": "#4C0743",
-                      "fontWeight": "bold"
-                    }
-                  }
-                ]
-              },
-              {
-                "textRuns": [
-                  {
-                    "value": "order = forecast to next delivery × buffer − stock on hand → round up to whole cases",
-                    "textStyle": {
-                      "fontFamily": "Courier New",
-                      "fontSize": "8.5pt",
-                      "color": "#6E1A63"
-                    }
-                  }
-                ]
-              },
-              {
-                "textRuns": [
-                  {
-                    "value": "buffer 1.2 ambient · 1.15 fresh · 1.1 baked",
-                    "textStyle": {
-                      "fontFamily": "Courier New",
-                      "fontSize": "8.5pt",
-                      "color": "#6E1A63"
-                    }
-                  }
-                ]
-              },
-              {
-                "textRuns": [
-                  {
-                    "value": "If a product sold out on nearly every match, true demand is invisible, so the plan recommends a ",
-                    "textStyle": {
-                      "fontFamily": "Arial",
-                      "fontSize": "9pt",
-                      "color": "#5B4A58",
-                      "fontWeight": "normal"
+                      "fontSize": "8pt",
+                      "color": "#B3A9B1"
                     }
                   },
                   {
-                    "value": "+50% trial",
+                    "value": "Store data: simulated",
                     "textStyle": {
                       "fontFamily": "Arial",
-                      "fontSize": "9pt",
-                      "color": "#2A0F27",
-                      "fontWeight": "bold"
-                    }
-                  },
-                  {
-                    "value": ".",
-                    "textStyle": {
-                      "fontFamily": "Arial",
-                      "fontSize": "9pt",
-                      "color": "#5B4A58",
-                      "fontWeight": "normal"
+                      "fontSize": "8pt",
+                      "color": "#FFFFFF"
                     }
                   }
-                ]
+                ],
+                "horizontalTextAlignment": "center"
               }
             ]
           }
@@ -131,7 +84,7 @@
                 "color": {
                   "expr": {
                     "Literal": {
-                      "Value": "'#FFFFFF'"
+                      "Value": "'#6E1A63'"
                     }
                   }
                 }
@@ -153,25 +106,7 @@
             "show": {
               "expr": {
                 "Literal": {
-                  "Value": "true"
-                }
-              }
-            },
-            "color": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "Literal": {
-                      "Value": "'#E6DDE4'"
-                    }
-                  }
-                }
-              }
-            },
-            "radius": {
-              "expr": {
-                "Literal": {
-                  "Value": "4D"
+                  "Value": "false"
                 }
               }
             }
@@ -197,7 +132,91 @@
             "show": {
               "expr": {
                 "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "showTooltipButton": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "showFocusModeButton": {
+              "expr": {
+                "Literal": {
                   "Value": "false"
+                }
+              }
+            },
+            "showFilterRestatementButton": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "showOptionsMenu": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "foreground": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#4C0743'"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ],
+      "visualHeaderTooltip": [
+        {
+          "properties": {
+            "type": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Default'"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'About the data\nReal: Sheffield United home fixtures, kick-off times and crowds (92 matches), from FBref, Wikipedia, footballwebpages.co.uk and vavel.com.\nSimulated: the shop''s sales, stock, prices, promotions and weather, generated to behave like a real convenience store, including the sell-outs and data glitches you''d find in a real till export.'"
+                }
+              }
+            },
+            "titleFontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#4C0743'"
+                    }
+                  }
+                }
+              }
+            },
+            "fontFamily": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Arial'"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "9D"
                 }
               }
             }

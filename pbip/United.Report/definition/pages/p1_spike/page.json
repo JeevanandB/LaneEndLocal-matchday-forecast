@@ -7,28 +7,28 @@
   "width": 1280,
   "visualInteractions": [
     {
-      "source": "p1_spi_slicer_38",
-      "target": "p1_spi_card_17",
+      "source": "p1_spi_slicer_43",
+      "target": "p1_spi_card_19",
       "type": "NoFilter"
     },
     {
-      "source": "p1_spi_slicer_38",
-      "target": "p1_spi_card_21",
+      "source": "p1_spi_slicer_43",
+      "target": "p1_spi_card_23",
       "type": "NoFilter"
     },
     {
-      "source": "p1_spi_slicer_38",
-      "target": "p1_spi_card_25",
+      "source": "p1_spi_slicer_43",
+      "target": "p1_spi_card_27",
       "type": "NoFilter"
     },
     {
-      "source": "p1_spi_slicer_38",
-      "target": "p1_spi_card_29",
+      "source": "p1_spi_slicer_43",
+      "target": "p1_spi_card_31",
       "type": "NoFilter"
     },
     {
-      "source": "p1_spi_slicer_38",
-      "target": "p1_spi_clustere_39",
+      "source": "p1_spi_slicer_43",
+      "target": "p1_spi_clustere_44",
       "type": "NoFilter"
     }
   ]

@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
   "name": "p1_spi_actionBu_7",
   "position": {
-    "x": 814,
-    "y": 6,
+    "x": 312,
+    "y": 40,
     "z": 700,
-    "height": 24,
-    "width": 148,
+    "height": 18,
+    "width": 66,
     "tabOrder": 700
   },
   "visual": {
@@ -45,7 +45,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'2 · FORECASTING AHEAD'"
+                  "Value": "'LinkedIn'"
                 }
               }
             },
@@ -85,6 +85,34 @@
               "expr": {
                 "Literal": {
                   "Value": "'center'"
+                }
+              }
+            },
+            "leftMargin": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            },
+            "rightMargin": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            },
+            "topMargin": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            },
+            "bottomMargin": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
                 }
               }
             }
@@ -158,7 +186,7 @@
             "roundEdge": {
               "expr": {
                 "Literal": {
-                  "Value": "6D"
+                  "Value": "8D"
                 }
               }
             }
@@ -258,14 +286,14 @@
             "type": {
               "expr": {
                 "Literal": {
-                  "Value": "'PageNavigation'"
+                  "Value": "'WebUrl'"
                 }
               }
             },
-            "navigationSection": {
+            "webUrl": {
               "expr": {
                 "Literal": {
-                  "Value": "'p2_forecast'"
+                  "Value": "'https://www.linkedin.com/in/jeevanand-balasubrahmanya/'"
                 }
               }
             }

@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
   "name": "p3_pla_shape_106",
   "position": {
-    "x": 949,
+    "x": 16,
     "y": 74,
-    "z": 2700,
+    "z": 1700,
     "height": 86,
     "width": 303,
-    "tabOrder": 2700
+    "tabOrder": 1700
   },
   "visual": {
     "visualType": "shape",
