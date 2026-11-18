@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
   "name": "p1_spi_actionBu_8",
   "position": {
-    "x": 662,
+    "x": 666,
     "y": 6,
     "z": 800,
     "height": 24,
-    "width": 148,
+    "width": 140,
     "tabOrder": 800
   },
   "visual": {
@@ -54,7 +54,7 @@
                 "color": {
                   "expr": {
                     "Literal": {
-                      "Value": "'#4C0743'"
+                      "Value": "'#FFFFFF'"
                     }
                   }
                 }
@@ -63,7 +63,7 @@
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "7D"
+                  "Value": "8D"
                 }
               }
             },
@@ -100,35 +100,10 @@
             "show": {
               "expr": {
                 "Literal": {
-                  "Value": "true"
+                  "Value": "false"
                 }
               }
             }
-          }
-        },
-        {
-          "properties": {
-            "fillColor": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "Literal": {
-                      "Value": "'#E9D9E6'"
-                    }
-                  }
-                }
-              }
-            },
-            "transparency": {
-              "expr": {
-                "Literal": {
-                  "Value": "0D"
-                }
-              }
-            }
-          },
-          "selector": {
-            "id": "default"
           }
         }
       ],

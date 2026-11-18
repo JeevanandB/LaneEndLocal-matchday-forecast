@@ -7,28 +7,253 @@
   "width": 1280,
   "visualInteractions": [
     {
-      "source": "p1_spi_slicer_43",
-      "target": "p1_spi_card_19",
+      "source": "p1_spi_slicer_52",
+      "target": "p1_spi_textbox_20",
       "type": "NoFilter"
     },
     {
-      "source": "p1_spi_slicer_43",
-      "target": "p1_spi_card_23",
+      "source": "p1_spi_slicer_52",
+      "target": "p1_spi_multiRow_21",
       "type": "NoFilter"
     },
     {
-      "source": "p1_spi_slicer_43",
-      "target": "p1_spi_card_27",
+      "source": "p1_spi_slicer_52",
+      "target": "p1_spi_card_22",
       "type": "NoFilter"
     },
     {
-      "source": "p1_spi_slicer_43",
-      "target": "p1_spi_card_31",
+      "source": "p1_spi_slicer_52",
+      "target": "p1_spi_multiRow_23",
       "type": "NoFilter"
     },
     {
-      "source": "p1_spi_slicer_43",
-      "target": "p1_spi_clustere_44",
+      "source": "p1_spi_slicer_52",
+      "target": "p1_spi_textbox_26",
+      "type": "NoFilter"
+    },
+    {
+      "source": "p1_spi_slicer_52",
+      "target": "p1_spi_multiRow_27",
+      "type": "NoFilter"
+    },
+    {
+      "source": "p1_spi_slicer_52",
+      "target": "p1_spi_card_28",
+      "type": "NoFilter"
+    },
+    {
+      "source": "p1_spi_slicer_52",
+      "target": "p1_spi_multiRow_29",
+      "type": "NoFilter"
+    },
+    {
+      "source": "p1_spi_slicer_52",
+      "target": "p1_spi_textbox_32",
+      "type": "NoFilter"
+    },
+    {
+      "source": "p1_spi_slicer_52",
+      "target": "p1_spi_multiRow_33",
+      "type": "NoFilter"
+    },
+    {
+      "source": "p1_spi_slicer_52",
+      "target": "p1_spi_card_34",
+      "type": "NoFilter"
+    },
+    {
+      "source": "p1_spi_slicer_52",
+      "target": "p1_spi_multiRow_35",
+      "type": "NoFilter"
+    },
+    {
+      "source": "p1_spi_slicer_52",
+      "target": "p1_spi_textbox_38",
+      "type": "NoFilter"
+    },
+    {
+      "source": "p1_spi_slicer_52",
+      "target": "p1_spi_multiRow_39",
+      "type": "NoFilter"
+    },
+    {
+      "source": "p1_spi_slicer_52",
+      "target": "p1_spi_textbox_40",
+      "type": "NoFilter"
+    },
+    {
+      "source": "p1_spi_slicer_52",
+      "target": "p1_spi_clustere_53",
+      "type": "NoFilter"
+    },
+    {
+      "source": "p1_spi_lineChar_50",
+      "target": "p1_spi_textbox_20",
+      "type": "NoFilter"
+    },
+    {
+      "source": "p1_spi_lineChar_50",
+      "target": "p1_spi_multiRow_21",
+      "type": "NoFilter"
+    },
+    {
+      "source": "p1_spi_lineChar_50",
+      "target": "p1_spi_card_22",
+      "type": "NoFilter"
+    },
+    {
+      "source": "p1_spi_lineChar_50",
+      "target": "p1_spi_multiRow_23",
+      "type": "NoFilter"
+    },
+    {
+      "source": "p1_spi_lineChar_50",
+      "target": "p1_spi_textbox_26",
+      "type": "NoFilter"
+    },
+    {
+      "source": "p1_spi_lineChar_50",
+      "target": "p1_spi_multiRow_27",
+      "type": "NoFilter"
+    },
+    {
+      "source": "p1_spi_lineChar_50",
+      "target": "p1_spi_card_28",
+      "type": "NoFilter"
+    },
+    {
+      "source": "p1_spi_lineChar_50",
+      "target": "p1_spi_multiRow_29",
+      "type": "NoFilter"
+    },
+    {
+      "source": "p1_spi_lineChar_50",
+      "target": "p1_spi_textbox_32",
+      "type": "NoFilter"
+    },
+    {
+      "source": "p1_spi_lineChar_50",
+      "target": "p1_spi_multiRow_33",
+      "type": "NoFilter"
+    },
+    {
+      "source": "p1_spi_lineChar_50",
+      "target": "p1_spi_card_34",
+      "type": "NoFilter"
+    },
+    {
+      "source": "p1_spi_lineChar_50",
+      "target": "p1_spi_multiRow_35",
+      "type": "NoFilter"
+    },
+    {
+      "source": "p1_spi_lineChar_50",
+      "target": "p1_spi_textbox_38",
+      "type": "NoFilter"
+    },
+    {
+      "source": "p1_spi_lineChar_50",
+      "target": "p1_spi_multiRow_39",
+      "type": "NoFilter"
+    },
+    {
+      "source": "p1_spi_lineChar_50",
+      "target": "p1_spi_textbox_40",
+      "type": "NoFilter"
+    },
+    {
+      "source": "p1_spi_lineChar_50",
+      "target": "p1_spi_clustere_53",
+      "type": "NoFilter"
+    },
+    {
+      "source": "p1_spi_lineChar_50",
+      "target": "p1_spi_slicer_52",
+      "type": "NoFilter"
+    },
+    {
+      "source": "p1_spi_clustere_53",
+      "target": "p1_spi_textbox_20",
+      "type": "NoFilter"
+    },
+    {
+      "source": "p1_spi_clustere_53",
+      "target": "p1_spi_multiRow_21",
+      "type": "NoFilter"
+    },
+    {
+      "source": "p1_spi_clustere_53",
+      "target": "p1_spi_card_22",
+      "type": "NoFilter"
+    },
+    {
+      "source": "p1_spi_clustere_53",
+      "target": "p1_spi_multiRow_23",
+      "type": "NoFilter"
+    },
+    {
+      "source": "p1_spi_clustere_53",
+      "target": "p1_spi_textbox_26",
+      "type": "NoFilter"
+    },
+    {
+      "source": "p1_spi_clustere_53",
+      "target": "p1_spi_multiRow_27",
+      "type": "NoFilter"
+    },
+    {
+      "source": "p1_spi_clustere_53",
+      "target": "p1_spi_card_28",
+      "type": "NoFilter"
+    },
+    {
+      "source": "p1_spi_clustere_53",
+      "target": "p1_spi_multiRow_29",
+      "type": "NoFilter"
+    },
+    {
+      "source": "p1_spi_clustere_53",
+      "target": "p1_spi_textbox_32",
+      "type": "NoFilter"
+    },
+    {
+      "source": "p1_spi_clustere_53",
+      "target": "p1_spi_multiRow_33",
+      "type": "NoFilter"
+    },
+    {
+      "source": "p1_spi_clustere_53",
+      "target": "p1_spi_card_34",
+      "type": "NoFilter"
+    },
+    {
+      "source": "p1_spi_clustere_53",
+      "target": "p1_spi_multiRow_35",
+      "type": "NoFilter"
+    },
+    {
+      "source": "p1_spi_clustere_53",
+      "target": "p1_spi_textbox_38",
+      "type": "NoFilter"
+    },
+    {
+      "source": "p1_spi_clustere_53",
+      "target": "p1_spi_multiRow_39",
+      "type": "NoFilter"
+    },
+    {
+      "source": "p1_spi_clustere_53",
+      "target": "p1_spi_textbox_40",
+      "type": "NoFilter"
+    },
+    {
+      "source": "p1_spi_clustere_53",
+      "target": "p1_spi_lineChar_50",
+      "type": "NoFilter"
+    },
+    {
+      "source": "p1_spi_clustere_53",
+      "target": "p1_spi_slicer_52",
       "type": "NoFilter"
     }
   ]

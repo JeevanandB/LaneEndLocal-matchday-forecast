@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
   "name": "p1_spi_textbox_38",
   "position": {
-    "x": 445,
-    "y": 171,
+    "x": 957,
+    "y": 80,
     "z": 3800,
-    "height": 41,
-    "width": 395,
+    "height": 22,
+    "width": 287,
     "tabOrder": 3800
   },
   "visual": {
@@ -19,20 +19,12 @@
               {
                 "textRuns": [
                   {
-                    "value": "Lager Single Can 500ml sells 3.3× normal",
+                    "value": "HOME MATCHES ANALYSED",
                     "textStyle": {
                       "fontFamily": "Arial",
                       "fontSize": "9pt",
-                      "color": "#2A0F27",
+                      "color": "#4C0743",
                       "fontWeight": "bold"
-                    }
-                  },
-                  {
-                    "value": " on a match day: the single biggest swing in the shop.",
-                    "textStyle": {
-                      "fontFamily": "Arial",
-                      "fontSize": "9pt",
-                      "color": "#5B4A58"
                     }
                   }
                 ]
@@ -114,7 +106,91 @@
             "show": {
               "expr": {
                 "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "showTooltipButton": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "showFocusModeButton": {
+              "expr": {
+                "Literal": {
                   "Value": "false"
+                }
+              }
+            },
+            "showFilterRestatementButton": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "showOptionsMenu": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "foreground": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#4C0743'"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ],
+      "visualHeaderTooltip": [
+        {
+          "properties": {
+            "type": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Default'"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Home matches analysed\nEvery competitive Sheffield United home match at Bramall Lane in the period: Championship, Premier League (2023–24), FA Cup, EFL Cup and the 2025 play-off semi-final.'"
+                }
+              }
+            },
+            "titleFontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#4C0743'"
+                    }
+                  }
+                }
+              }
+            },
+            "fontFamily": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Arial'"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "9D"
                 }
               }
             }

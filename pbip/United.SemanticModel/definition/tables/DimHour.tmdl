@@ -4,7 +4,7 @@ table DimHour
 
 	column hour
 		dataType: int64
-		formatString: 0
+		formatString: 00":00"
 		lineageTag: f28f01d4-e867-499c-ae21-4a925acfe54d
 		summarizeBy: none
 		sourceColumn: [hour]

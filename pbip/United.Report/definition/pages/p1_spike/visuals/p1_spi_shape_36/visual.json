@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
   "name": "p1_spi_shape_36",
   "position": {
-    "x": 435,
-    "y": 168,
+    "x": 949,
+    "y": 74,
     "z": 3600,
-    "height": 46,
-    "width": 409,
+    "height": 86,
+    "width": 303,
     "tabOrder": 3600
   },
   "visual": {

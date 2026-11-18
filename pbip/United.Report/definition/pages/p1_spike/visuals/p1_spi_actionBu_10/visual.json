@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
   "name": "p1_spi_actionBu_10",
   "position": {
-    "x": 966,
+    "x": 806,
     "y": 6,
     "z": 1000,
     "height": 24,
-    "width": 148,
+    "width": 164,
     "tabOrder": 1000
   },
   "visual": {
@@ -45,7 +45,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'3 · SKU ORDER PLANNER'"
+                  "Value": "'2 · FORECASTING AHEAD'"
                 }
               }
             },
@@ -54,7 +54,7 @@
                 "color": {
                   "expr": {
                     "Literal": {
-                      "Value": "'#FFFFFF'"
+                      "Value": "'#E3CFE0'"
                     }
                   }
                 }
@@ -63,7 +63,7 @@
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "7D"
+                  "Value": "8D"
                 }
               }
             },
@@ -100,35 +100,10 @@
             "show": {
               "expr": {
                 "Literal": {
-                  "Value": "true"
+                  "Value": "false"
                 }
               }
             }
-          }
-        },
-        {
-          "properties": {
-            "fillColor": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "Literal": {
-                      "Value": "'#6E1A63'"
-                    }
-                  }
-                }
-              }
-            },
-            "transparency": {
-              "expr": {
-                "Literal": {
-                  "Value": "0D"
-                }
-              }
-            }
-          },
-          "selector": {
-            "id": "default"
           }
         }
       ],
@@ -265,7 +240,7 @@
             "navigationSection": {
               "expr": {
                 "Literal": {
-                  "Value": "'p3_planner'"
+                  "Value": "'p2_forecast'"
                 }
               }
             }

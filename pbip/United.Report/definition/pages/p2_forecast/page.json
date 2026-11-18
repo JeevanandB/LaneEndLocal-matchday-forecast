@@ -7,13 +7,13 @@
   "width": 1280,
   "visualInteractions": [
     {
-      "source": "p2_for_slicer_63",
-      "target": "p2_for_lineChar_88",
+      "source": "p2_for_slicer_73",
+      "target": "p2_for_lineChar_105",
       "type": "NoFilter"
     },
     {
-      "source": "p2_for_slicer_63",
-      "target": "p2_for_lineClus_89",
+      "source": "p2_for_slicer_73",
+      "target": "p2_for_lineClus_106",
       "type": "NoFilter"
     }
   ]

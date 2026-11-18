@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
   "name": "p4_met_textbox_159",
   "position": {
-    "x": 26,
-    "y": 435,
-    "z": 3400,
-    "height": 259,
-    "width": 287,
-    "tabOrder": 3400
+    "x": 918,
+    "y": 37,
+    "z": 1300,
+    "height": 19,
+    "width": 218,
+    "tabOrder": 1300
   },
   "visual": {
     "visualType": "textbox",
@@ -19,82 +19,23 @@
               {
                 "textRuns": [
                   {
-                    "value": "FROM FORECAST TO ORDER",
+                    "value": "● ",
                     "textStyle": {
                       "fontFamily": "Arial",
-                      "fontSize": "12pt",
-                      "color": "#4C0743",
-                      "fontWeight": "bold"
-                    }
-                  }
-                ]
-              },
-              {
-                "textRuns": [
-                  {
-                    "value": " ",
-                    "textStyle": {
-                      "fontFamily": "Arial",
-                      "fontSize": "4pt",
-                      "color": "#2A0F27"
-                    }
-                  }
-                ]
-              },
-              {
-                "textRuns": [
-                  {
-                    "value": "order = forecast to next delivery × buffer − stock on hand → round up to whole cases",
-                    "textStyle": {
-                      "fontFamily": "Courier New",
-                      "fontSize": "9pt",
-                      "color": "#6E1A63"
-                    }
-                  }
-                ]
-              },
-              {
-                "textRuns": [
-                  {
-                    "value": "buffer 1.2 ambient · 1.15 fresh · 1.1 baked",
-                    "textStyle": {
-                      "fontFamily": "Courier New",
-                      "fontSize": "9pt",
-                      "color": "#6E1A63"
-                    }
-                  }
-                ]
-              },
-              {
-                "textRuns": [
-                  {
-                    "value": "If a product sold out on nearly every match, true demand is invisible, so the plan recommends a ",
-                    "textStyle": {
-                      "fontFamily": "Arial",
-                      "fontSize": "10pt",
-                      "color": "#5B4A58",
-                      "fontWeight": "normal"
+                      "fontSize": "7.5pt",
+                      "color": "#E8645A"
                     }
                   },
                   {
-                    "value": "+50% trial",
+                    "value": "Fixtures: real Sheffield United home matches",
                     "textStyle": {
                       "fontFamily": "Arial",
-                      "fontSize": "10pt",
-                      "color": "#2A0F27",
-                      "fontWeight": "bold"
-                    }
-                  },
-                  {
-                    "value": ".",
-                    "textStyle": {
-                      "fontFamily": "Arial",
-                      "fontSize": "10pt",
-                      "color": "#5B4A58",
-                      "fontWeight": "normal"
+                      "fontSize": "7.5pt",
+                      "color": "#FFFFFF"
                     }
                   }
-                ]
+                ],
+                "horizontalTextAlignment": "center"
               }
             ]
           }
@@ -134,7 +75,25 @@
             "show": {
               "expr": {
                 "Literal": {
-                  "Value": "false"
+                  "Value": "true"
+                }
+              }
+            },
+            "color": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#6E1A63'"
+                    }
+                  }
+                }
+              }
+            },
+            "transparency": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
                 }
               }
             }
@@ -147,7 +106,25 @@
             "show": {
               "expr": {
                 "Literal": {
-                  "Value": "false"
+                  "Value": "true"
+                }
+              }
+            },
+            "color": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#6E1A63'"
+                    }
+                  }
+                }
+              }
+            },
+            "radius": {
+              "expr": {
+                "Literal": {
+                  "Value": "10D"
                 }
               }
             }
@@ -174,6 +151,40 @@
               "expr": {
                 "Literal": {
                   "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "padding": [
+        {
+          "properties": {
+            "top": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            },
+            "bottom": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            },
+            "left": {
+              "expr": {
+                "Literal": {
+                  "Value": "2D"
+                }
+              }
+            },
+            "right": {
+              "expr": {
+                "Literal": {
+                  "Value": "2D"
                 }
               }
             }

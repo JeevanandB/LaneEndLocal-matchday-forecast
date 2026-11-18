@@ -87,6 +87,10 @@ table SkuMatchUplift
 		dataType: boolean
 		lineageTag: 55a61da0-499e-4aec-a832-b372bd4a56fe
 
+	column short_name = LOOKUPVALUE ( DimProduct[short_name], DimProduct[sku_id], SkuMatchUplift[sku_id] )
+		dataType: string
+		lineageTag: 67c1699b-b5f2-4e2d-8eea-079670bdfb4d
+
 	partition SkuMatchUplift = m
 		mode: import
 		source =

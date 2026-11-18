@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
   "name": "p1_spi_textbox_3",
   "position": {
-    "x": 10,
-    "y": 2,
+    "x": 12,
+    "y": 18,
     "z": 300,
-    "height": 20,
-    "width": 640,
+    "height": 28,
+    "width": 645,
     "tabOrder": 300
   },
   "visual": {
@@ -19,11 +19,11 @@
               {
                 "textRuns": [
                   {
-                    "value": "LANE END LOCAL · MATCH-DAY DEMAND INSIGHTS",
+                    "value": "When the Blades play at home, what should the corner shop order?",
                     "textStyle": {
                       "fontFamily": "Arial",
-                      "fontSize": "8pt",
-                      "color": "#C99AC2",
+                      "fontSize": "14pt",
+                      "color": "#FFFFFF",
                       "fontWeight": "bold"
                     }
                   }

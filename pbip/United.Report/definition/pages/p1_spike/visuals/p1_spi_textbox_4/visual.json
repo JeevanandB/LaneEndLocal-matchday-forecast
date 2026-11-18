@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
   "name": "p1_spi_textbox_4",
   "position": {
-    "x": 10,
-    "y": 16,
+    "x": 12,
+    "y": 40,
     "z": 400,
-    "height": 28,
-    "width": 645,
+    "height": 22,
+    "width": 300,
     "tabOrder": 400
   },
   "visual": {
@@ -19,12 +19,11 @@
               {
                 "textRuns": [
                   {
-                    "value": "When the Blades play at home, what should the corner shop order?",
+                    "value": "Portfolio project by Jeevanand Balasubrahmanya ·",
                     "textStyle": {
                       "fontFamily": "Arial",
-                      "fontSize": "15pt",
-                      "color": "#FFFFFF",
-                      "fontWeight": "bold"
+                      "fontSize": "9pt",
+                      "color": "#E9D9E6"
                     }
                   }
                 ]

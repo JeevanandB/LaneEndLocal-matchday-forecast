@@ -7,78 +7,138 @@
   "width": 1280,
   "visualInteractions": [
     {
-      "source": "p3_pla_slicer_107",
-      "target": "p3_pla_clustere_124",
+      "source": "p3_pla_slicer_125",
+      "target": "p3_pla_clustere_145",
       "type": "NoFilter"
     },
     {
-      "source": "p3_pla_slicer_107",
-      "target": "p3_pla_lineChar_125",
+      "source": "p3_pla_slicer_125",
+      "target": "p3_pla_lineChar_146",
       "type": "NoFilter"
     },
     {
-      "source": "p3_pla_tableEx_122",
-      "target": "p3_pla_slicer_107",
+      "source": "p3_pla_tableEx_143",
+      "target": "p3_pla_slicer_125",
       "type": "NoFilter"
     },
     {
-      "source": "p3_pla_tableEx_122",
-      "target": "p3_pla_card_109",
+      "source": "p3_pla_tableEx_143",
+      "target": "p3_pla_multiRow_127",
       "type": "NoFilter"
     },
     {
-      "source": "p3_pla_tableEx_122",
-      "target": "p3_pla_card_112",
+      "source": "p3_pla_tableEx_143",
+      "target": "p3_pla_textbox_130",
       "type": "NoFilter"
     },
     {
-      "source": "p3_pla_tableEx_122",
-      "target": "p3_pla_card_116",
+      "source": "p3_pla_tableEx_143",
+      "target": "p3_pla_multiRow_131",
       "type": "NoFilter"
     },
     {
-      "source": "p3_pla_tableEx_122",
-      "target": "p3_pla_card_120",
+      "source": "p3_pla_tableEx_143",
+      "target": "p3_pla_multiRow_132",
       "type": "NoFilter"
     },
     {
-      "source": "p3_pla_tableEx_122",
-      "target": "p3_pla_slicer_123",
+      "source": "p3_pla_tableEx_143",
+      "target": "p3_pla_textbox_135",
       "type": "NoFilter"
     },
     {
-      "source": "p3_pla_tableEx_122",
-      "target": "p3_pla_clustere_124",
+      "source": "p3_pla_tableEx_143",
+      "target": "p3_pla_multiRow_136",
+      "type": "NoFilter"
+    },
+    {
+      "source": "p3_pla_tableEx_143",
+      "target": "p3_pla_textbox_137",
+      "type": "NoFilter"
+    },
+    {
+      "source": "p3_pla_tableEx_143",
+      "target": "p3_pla_textbox_140",
+      "type": "NoFilter"
+    },
+    {
+      "source": "p3_pla_tableEx_143",
+      "target": "p3_pla_multiRow_141",
+      "type": "NoFilter"
+    },
+    {
+      "source": "p3_pla_tableEx_143",
+      "target": "p3_pla_textbox_142",
+      "type": "NoFilter"
+    },
+    {
+      "source": "p3_pla_tableEx_143",
+      "target": "p3_pla_slicer_144",
+      "type": "NoFilter"
+    },
+    {
+      "source": "p3_pla_tableEx_143",
+      "target": "p3_pla_clustere_145",
       "type": "DataFilter"
     },
     {
-      "source": "p3_pla_tableEx_122",
-      "target": "p3_pla_lineChar_125",
+      "source": "p3_pla_tableEx_143",
+      "target": "p3_pla_lineChar_146",
       "type": "DataFilter"
     },
     {
-      "source": "p3_pla_slicer_123",
-      "target": "p3_pla_clustere_124",
+      "source": "p3_pla_slicer_144",
+      "target": "p3_pla_clustere_145",
       "type": "NoFilter"
     },
     {
-      "source": "p3_pla_slicer_123",
-      "target": "p3_pla_lineChar_125",
+      "source": "p3_pla_slicer_144",
+      "target": "p3_pla_lineChar_146",
       "type": "NoFilter"
     },
     {
-      "source": "p3_pla_slicer_123",
-      "target": "p3_pla_card_112",
+      "source": "p3_pla_slicer_144",
+      "target": "p3_pla_textbox_130",
       "type": "NoFilter"
     },
     {
-      "source": "p3_pla_slicer_123",
-      "target": "p3_pla_card_116",
+      "source": "p3_pla_slicer_144",
+      "target": "p3_pla_multiRow_131",
       "type": "NoFilter"
     },
     {
-      "source": "p3_pla_slicer_123",
-      "target": "p3_pla_card_120",
+      "source": "p3_pla_slicer_144",
+      "target": "p3_pla_multiRow_132",
+      "type": "NoFilter"
+    },
+    {
+      "source": "p3_pla_slicer_144",
+      "target": "p3_pla_textbox_135",
+      "type": "NoFilter"
+    },
+    {
+      "source": "p3_pla_slicer_144",
+      "target": "p3_pla_multiRow_136",
+      "type": "NoFilter"
+    },
+    {
+      "source": "p3_pla_slicer_144",
+      "target": "p3_pla_textbox_137",
+      "type": "NoFilter"
+    },
+    {
+      "source": "p3_pla_slicer_144",
+      "target": "p3_pla_textbox_140",
+      "type": "NoFilter"
+    },
+    {
+      "source": "p3_pla_slicer_144",
+      "target": "p3_pla_multiRow_141",
+      "type": "NoFilter"
+    },
+    {
+      "source": "p3_pla_slicer_144",
+      "target": "p3_pla_textbox_142",
       "type": "NoFilter"
     }
   ]

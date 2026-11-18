@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
   "name": "p1_spi_textbox_13",
   "position": {
-    "x": 1108,
-    "y": 34,
+    "x": 918,
+    "y": 37,
     "z": 1300,
-    "height": 22,
-    "width": 158,
+    "height": 19,
+    "width": 218,
     "tabOrder": 1300
   },
   "visual": {
@@ -22,15 +22,15 @@
                     "value": "● ",
                     "textStyle": {
                       "fontFamily": "Arial",
-                      "fontSize": "8pt",
-                      "color": "#B3A9B1"
+                      "fontSize": "7.5pt",
+                      "color": "#E8645A"
                     }
                   },
                   {
-                    "value": "Store data: simulated",
+                    "value": "Fixtures: real Sheffield United home matches",
                     "textStyle": {
                       "fontFamily": "Arial",
-                      "fontSize": "8pt",
+                      "fontSize": "7.5pt",
                       "color": "#FFFFFF"
                     }
                   }
@@ -106,7 +106,25 @@
             "show": {
               "expr": {
                 "Literal": {
-                  "Value": "false"
+                  "Value": "true"
+                }
+              }
+            },
+            "color": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#6E1A63'"
+                    }
+                  }
+                }
+              }
+            },
+            "radius": {
+              "expr": {
+                "Literal": {
+                  "Value": "10D"
                 }
               }
             }
@@ -132,91 +150,41 @@
             "show": {
               "expr": {
                 "Literal": {
-                  "Value": "true"
-                }
-              }
-            },
-            "showTooltipButton": {
-              "expr": {
-                "Literal": {
-                  "Value": "true"
-                }
-              }
-            },
-            "showFocusModeButton": {
-              "expr": {
-                "Literal": {
                   "Value": "false"
-                }
-              }
-            },
-            "showFilterRestatementButton": {
-              "expr": {
-                "Literal": {
-                  "Value": "false"
-                }
-              }
-            },
-            "showOptionsMenu": {
-              "expr": {
-                "Literal": {
-                  "Value": "true"
-                }
-              }
-            },
-            "foreground": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "Literal": {
-                      "Value": "'#4C0743'"
-                    }
-                  }
                 }
               }
             }
           }
         }
       ],
-      "visualHeaderTooltip": [
+      "padding": [
         {
           "properties": {
-            "type": {
+            "top": {
               "expr": {
                 "Literal": {
-                  "Value": "'Default'"
+                  "Value": "0D"
                 }
               }
             },
-            "text": {
+            "bottom": {
               "expr": {
                 "Literal": {
-                  "Value": "'About the data\nReal: Sheffield United home fixtures, kick-off times and crowds (92 matches), from FBref, Wikipedia, footballwebpages.co.uk and vavel.com.\nSimulated: the shop''s sales, stock, prices, promotions and weather, generated to behave like a real convenience store, including the sell-outs and data glitches you''d find in a real till export.'"
+                  "Value": "0D"
                 }
               }
             },
-            "titleFontColor": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "Literal": {
-                      "Value": "'#4C0743'"
-                    }
-                  }
+            "left": {
+              "expr": {
+                "Literal": {
+                  "Value": "2D"
                 }
               }
             },
-            "fontFamily": {
+            "right": {
               "expr": {
                 "Literal": {
-                  "Value": "'Arial'"
-                }
-              }
-            },
-            "fontSize": {
-              "expr": {
-                "Literal": {
-                  "Value": "9D"
+                  "Value": "2D"
                 }
               }
             }

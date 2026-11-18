@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
   "name": "p4_met_textbox_150",
   "position": {
-    "x": 341,
-    "y": 150,
-    "z": 2500,
-    "height": 259,
-    "width": 287,
-    "tabOrder": 2500
+    "x": 12,
+    "y": 40,
+    "z": 400,
+    "height": 22,
+    "width": 300,
+    "tabOrder": 400
   },
   "visual": {
     "visualType": "textbox",
@@ -19,108 +19,11 @@
               {
                 "textRuns": [
                   {
-                    "value": "DATA",
+                    "value": "Portfolio project by Jeevanand Balasubrahmanya ·",
                     "textStyle": {
                       "fontFamily": "Arial",
-                      "fontSize": "12pt",
-                      "color": "#4C0743",
-                      "fontWeight": "bold"
-                    }
-                  }
-                ]
-              },
-              {
-                "textRuns": [
-                  {
-                    "value": " ",
-                    "textStyle": {
-                      "fontFamily": "Arial",
-                      "fontSize": "4pt",
-                      "color": "#2A0F27"
-                    }
-                  }
-                ]
-              },
-              {
-                "textRuns": [
-                  {
-                    "value": "• ",
-                    "textStyle": {
-                      "fontFamily": "Arial",
-                      "fontSize": "10pt",
-                      "color": "#5B4A58",
-                      "fontWeight": "normal"
-                    }
-                  },
-                  {
-                    "value": "Real: ",
-                    "textStyle": {
-                      "fontFamily": "Arial",
-                      "fontSize": "10pt",
-                      "color": "#2A0F27",
-                      "fontWeight": "bold"
-                    }
-                  },
-                  {
-                    "value": "92 Sheffield United home fixtures, kick-offs and crowds, Jan 2023 – Oct 2026 (FBref, Wikipedia, footballwebpages.co.uk, vavel.com). A few Sep–Oct 2026 values are estimated and flagged.",
-                    "textStyle": {
-                      "fontFamily": "Arial",
-                      "fontSize": "10pt",
-                      "color": "#5B4A58",
-                      "fontWeight": "normal"
-                    }
-                  }
-                ]
-              },
-              {
-                "textRuns": [
-                  {
-                    "value": "• ",
-                    "textStyle": {
-                      "fontFamily": "Arial",
-                      "fontSize": "10pt",
-                      "color": "#5B4A58",
-                      "fontWeight": "normal"
-                    }
-                  },
-                  {
-                    "value": "Simulated: ",
-                    "textStyle": {
-                      "fontFamily": "Arial",
-                      "fontSize": "10pt",
-                      "color": "#2A0F27",
-                      "fontWeight": "bold"
-                    }
-                  },
-                  {
-                    "value": "daily sales, prices, promos, stock, deliveries, waste for 51 products; hourly tills; weather; calendar.",
-                    "textStyle": {
-                      "fontFamily": "Arial",
-                      "fontSize": "10pt",
-                      "color": "#5B4A58",
-                      "fontWeight": "normal"
-                    }
-                  }
-                ]
-              },
-              {
-                "textRuns": [
-                  {
-                    "value": "• ",
-                    "textStyle": {
-                      "fontFamily": "Arial",
-                      "fontSize": "10pt",
-                      "color": "#5B4A58",
-                      "fontWeight": "normal"
-                    }
-                  },
-                  {
-                    "value": "Star schema: DimDate, DimProduct, DimFixture, FactSales, FactHourly.",
-                    "textStyle": {
-                      "fontFamily": "Arial",
-                      "fontSize": "10pt",
-                      "color": "#5B4A58",
-                      "fontWeight": "normal"
+                      "fontSize": "9pt",
+                      "color": "#E9D9E6"
                     }
                   }
                 ]

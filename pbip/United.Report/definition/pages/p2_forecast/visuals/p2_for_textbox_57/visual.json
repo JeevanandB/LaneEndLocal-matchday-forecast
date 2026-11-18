@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
   "name": "p2_for_textbox_57",
   "position": {
-    "x": 866,
-    "y": 34,
-    "z": 1200,
-    "height": 22,
-    "width": 238,
-    "tabOrder": 1200
+    "x": 12,
+    "y": 18,
+    "z": 300,
+    "height": 28,
+    "width": 645,
+    "tabOrder": 300
   },
   "visual": {
     "visualType": "textbox",
@@ -19,23 +19,15 @@
               {
                 "textRuns": [
                   {
-                    "value": "● ",
+                    "value": "When the Blades play at home, what should the corner shop order?",
                     "textStyle": {
                       "fontFamily": "Arial",
-                      "fontSize": "8pt",
-                      "color": "#C99AC2"
-                    }
-                  },
-                  {
-                    "value": "Fixtures: real Sheffield United home matches",
-                    "textStyle": {
-                      "fontFamily": "Arial",
-                      "fontSize": "8pt",
-                      "color": "#FFFFFF"
+                      "fontSize": "14pt",
+                      "color": "#FFFFFF",
+                      "fontWeight": "bold"
                     }
                   }
-                ],
-                "horizontalTextAlignment": "center"
+                ]
               }
             ]
           }
@@ -75,25 +67,7 @@
             "show": {
               "expr": {
                 "Literal": {
-                  "Value": "true"
-                }
-              }
-            },
-            "color": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "Literal": {
-                      "Value": "'#6E1A63'"
-                    }
-                  }
-                }
-              }
-            },
-            "transparency": {
-              "expr": {
-                "Literal": {
-                  "Value": "0D"
+                  "Value": "false"
                 }
               }
             }

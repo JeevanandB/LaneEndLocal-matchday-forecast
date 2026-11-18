@@ -249,6 +249,12 @@ table DimDate
 		lineageTag: 496ff03a-a013-481d-a490-a7e347ae94db
 		summarizeBy: none
 
+	/// Axis label: '13 Sep v Wolverhampton' on match days, otherwise the short date.
+	column match_axis = IF ( DimDate[is_match_day], FORMAT ( DimDate[date], "dd mmm" ) & " v " & LEFT ( DimDate[opponent], SEARCH ( " ", DimDate[opponent] & " " ) - 1 ), DimDate[date_label] )
+		dataType: string
+		lineageTag: 560a4f5a-01d9-4570-a31d-707baab3d688
+		sortByColumn: date
+
 	partition DimDate = m
 		mode: import
 		source =

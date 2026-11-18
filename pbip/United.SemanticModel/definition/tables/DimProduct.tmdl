@@ -92,6 +92,12 @@ table DimProduct
 		lineageTag: 1fe786b6-5c72-48f2-8579-be314a006848
 		summarizeBy: none
 
+	/// Short display name used on charts (as in the HTML version).
+	column short_name = SWITCH ( DimProduct[sku_id], "SKU108", "Single lager can", "SKU150", "Tea to go", "SKU109", "Lager 4-pack", "SKU100", "Cola 500ml", "SKU149", "Coffee to go", "SKU123", "Peanuts", "SKU125", "Chocolate bar", "SKU124", "Pork scratchings", "SKU101", "Diet cola", "SKU120", "Crisps (single)", "SKU103", "Still water", "SKU113", "Cider 4-pack", "SKU133", "Milk 2pt", "SKU129", "White bread", "SKU131", "Sausage roll", "SKU132", "Pasty", DimProduct[product_name] )
+		dataType: string
+		lineageTag: 03bad68d-e5b1-4201-8ccd-15c47ec1ba3c
+		sortByColumn: key_line_order
+
 	partition DimProduct = m
 		mode: import
 		source =

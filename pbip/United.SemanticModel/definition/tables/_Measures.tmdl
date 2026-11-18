@@ -570,6 +570,94 @@ table _Measures
 		displayFolder: 5 Order planner
 		lineageTag: 7ee93518-4214-4eef-97f5-ef70dfe40cc7
 
+	measure 'Rev Pill' = "▲ " & FORMAT ( [Rev Uplift %], "+0%" )
+		displayFolder: 7 Card text
+		lineageTag: 4b2b1492-63f8-49e4-9fe0-0a8747d1607b
+
+	measure 'Rev Note' = "vs " & FORMAT ( [Rev Normal Sat], "£#,##0" ) & " normal Saturday"
+		displayFolder: 7 Card text
+		lineageTag: 698cfe60-6e0d-423d-a274-3f0357b873b9
+
+	measure 'Tx Pill' = "▲ " & FORMAT ( [Tx Uplift %], "+0%" )
+		displayFolder: 7 Card text
+		lineageTag: a8a5c82c-64a1-4692-a0fb-6dd33a2d4d7d
+
+	measure 'Tx Note' = "vs " & FORMAT ( [Tx Normal Sat], "#,##0" ) & " normal Saturday"
+		displayFolder: 7 Card text
+		lineageTag: 4eba7a91-0b37-4f9f-b52a-fb4b233880f6
+
+	measure 'Peak Pill' = "▲ " & FORMAT ( [Peak Ratio], "0.0" ) & "×"
+		displayFolder: 7 Card text
+		lineageTag: 313fc273-8a2a-4aa3-9bbe-c922fedbcafd
+
+	measure 'Peak Note' = FORMAT ( [Peak Hour Revenue], "£#,##0" ) & " in one hour"
+		displayFolder: 7 Card text
+		lineageTag: 3afa1155-123d-49b2-91a3-62883817b309
+
+	measure 'WAPE Pill' = "▼ " & FORMAT ( [WAPE Gain (pts)], "0.0" ) & " pts"
+		displayFolder: 7 Card text
+		lineageTag: d345680c-6c77-446c-9eea-7a468693eac9
+
+	measure 'WAPE Note' = "vs owner's rule " & FORMAT ( [WAPE Owner (match days)], "0.0%" )
+		displayFolder: 7 Card text
+		lineageTag: 30ab0fcb-49c3-40fd-ac5d-1b3070e206f4
+
+	measure 'Insight P2 Forecast Lead' =
+			VAR e = ROUND ( ( DIVIDE ( [Key Forecast Units], [Key Actual Units] ) - 1 ) * 100, 0 )
+			RETURN "Forecast " & IF ( e >= 0, "+" ) & e & "% vs sales"
+		displayFolder: 7 Card text
+		lineageTag: 94b4ffe1-a04a-4720-8e99-b120b728eb7d
+
+	measure 'Insight P2 Forecast Rest' =
+			VAR n = ROUND ( ( DIVIDE ( [Key Owner Units], [Key Actual Units] ) - 1 ) * 100, 0 )
+			RETURN "for the key lines. The owner's rule was " & n & "%."
+		displayFolder: 7 Card text
+		lineageTag: 749299fc-bdcb-4563-a169-183ab641bdbf
+
+	measure 'Insight P2 Sold Out Lead' =
+			VAR outs = FILTER ( CALCULATETABLE ( VALUES ( DimProduct[short_name] ), DimProduct[is_key_line] = TRUE () ), CALCULATE ( SUM ( FactForecast[actual_stockout] ) ) > 0 )
+			RETURN IF ( COUNTROWS ( outs ) > 0, "Sold out: " & CONCATENATEX ( outs, DimProduct[short_name], ", " ), "No key line sold out" )
+		displayFolder: 7 Card text
+		lineageTag: 3a6b9b0b-8fc8-47ec-9318-bec286265ee1
+
+	measure 'Insight P2 Sold Out Rest' = IF ( LEFT ( [Insight P2 Sold Out Lead], 2 ) = "No", "at this match.", "Those sales are a floor, not true demand." )
+		displayFolder: 7 Card text
+		lineageTag: 037d3a23-4ebf-47ac-a51a-c6593bef9369
+
+	measure 'Insight P2 Crowd Lead' = "Crowd " & FORMAT ( [Crowd], "#,##0" ) & ":"
+		displayFolder: 7 Card text
+		lineageTag: a5b148e2-6130-4cb7-b583-98ba36a26908
+
+	measure 'Insight P2 Crowd Rest' = IF ( [Crowd] < 20000, "a small crowd, so a smaller lift.", "a full-size match-day lift." )
+		displayFolder: 7 Card text
+		lineageTag: cdc0b78c-377a-4367-bb3f-f2dd00f773d5
+
+	/// Match-day revenue at the peak hour only (for the 'peak £x' label).
+	measure 'Peak Marker' =
+			VAR t = ADDCOLUMNS ( ALL ( DimHour[hour] ), "@m", [Hourly Rev Match] )
+			VAR pk = MAXX ( TOPN ( 1, t, [@m], DESC ), DimHour[hour] )
+			RETURN IF ( SELECTEDVALUE ( DimHour[hour] ) = pk, [Hourly Rev Match] )
+		formatString: "peak "£#,##0
+		displayFolder: 2 Match-day spike
+		lineageTag: 8d569c48-fb8f-4970-b734-b3af851f7e1e
+
+	/// Places the 'pre-match rush' text inside the shaded band.
+	measure 'Rush Label' =
+			VAR k = [Kickoff Hour]
+			VAR h = SELECTEDVALUE ( DimHour[hour] )
+			RETURN IF ( h = k - 2, MAXX ( ALL ( DimHour ), [Hourly Rev Match] ) * 0.05 )
+		formatString: """pre-match rush"""
+		displayFolder: 2 Match-day spike
+		lineageTag: 5fabf5fa-7cc2-4bf4-8e28-83847e78f98a
+
+	measure 'Status Bg' = SWITCH ( SELECTEDVALUE ( FactOrderPlan[status] ), "Demand hidden - trial +50%", "#FBE5E2", "Sells out - order more", "#FBE5E2", "Order more", "#EADCE8", "Over-ordered", "#F5EEF4", "#FFFFFF" )
+		displayFolder: 5 Order planner
+		lineageTag: 5de23905-26e0-4e79-b115-c757cc82bea9
+
+	measure 'Status Text Colour' = SWITCH ( SELECTEDVALUE ( FactOrderPlan[status] ), "Demand hidden - trial +50%", "#C0392B", "Sells out - order more", "#C0392B", "Order more", "#4C0743", "Over-ordered", "#8E3A83", "#8A7F88" )
+		displayFolder: 5 Order planner
+		lineageTag: 2adae359-7d59-4b03-aac7-8f4b9be3f55b
+
 	column _
 		dataType: string
 		isHidden

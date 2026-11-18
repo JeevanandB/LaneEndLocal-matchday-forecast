@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
   "name": "p1_spi_shape_37",
   "position": {
-    "x": 435,
-    "y": 168,
+    "x": 949,
+    "y": 74,
     "z": 3700,
-    "height": 46,
-    "width": 3,
+    "height": 3,
+    "width": 303,
     "tabOrder": 3700
   },
   "visual": {
@@ -44,7 +44,7 @@
                 "color": {
                   "expr": {
                     "Literal": {
-                      "Value": "'#A0559A'"
+                      "Value": "'#4C0743'"
                     }
                   }
                 }
